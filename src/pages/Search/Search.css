@@ -1,357 +1,541 @@
-/* Search.css */
+
+/* =========================================
+   SEARCH PAGE
+   ========================================= */
+
 .search-page {
-  background-color: #f8f9fa;
   min-height: 100vh;
-  padding-bottom: 50px;
+  padding-bottom: 48px;
+  background-color: #f8f9fa;
+  overflow-x: hidden;
 }
 
-/* --- Top Search Bar --- */
+.search-page *,
+.search-page *::before,
+.search-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TOP SEARCH BAR
+   ========================================= */
+
 .top-search-bar {
-  background: var(--white);
-  padding: 15px 0;
+  position: relative;
+  z-index: 2;
+  background: var(--white, #ffffff);
+  padding: 16px 0;
   border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .top-search-container {
   display: flex;
-  gap: 15px;
   align-items: center;
-  flex-wrap: wrap; 
+  gap: 16px;
+  flex-wrap: nowrap;
 }
 
 .search-location {
-  border: 1px solid #e5e7eb;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 14px;
+  min-height: 50px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  border: 1px solid #e0e5ec;
+  border-radius: 10px;
   background: #fff;
-  white-space: nowrap; 
+  color: var(--text-dark, #1f2937);
+  font-size: 14px;
+  white-space: nowrap;
 }
 
 .search-input-wrapper {
   flex: 1;
-  min-width: 200px; 
+  min-width: 0;
+  min-height: 50px;
   display: flex;
   align-items: center;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 10px 15px;
+  gap: 10px;
+  padding: 0 16px;
+  border: 1px solid #e0e5ec;
+  border-radius: 10px;
   background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input-wrapper:focus-within {
+  border-color: var(--primary-orange, #ff6900);
+  box-shadow: 0 0 0 3px rgba(255, 105, 0, 0.09);
 }
 
 .search-input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 0;
   border: none;
   outline: none;
-  width: 100%;
-  font-size: 14px;
-  margin-left: 10px;
+  background: transparent;
+  color: var(--text-dark, #1f2937);
+  font: inherit;
+  font-size: 15px;
+}
+
+.search-input-wrapper input::placeholder {
+  color: #87909e;
+}
+
+.search-clear-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: #f0f2f5;
+  color: #374151;
+  font-size: 21px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .top-search-btn {
-  background: var(--primary-orange);
+  min-width: 58px;
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid var(--primary-orange, #ff6900);
+  border-radius: 10px;
+  background: var(--primary-orange, #ff6900);
   color: #fff;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  font-size: 19px;
   cursor: pointer;
-  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-/* --- Main Layout (Desktop) --- */
-.search-layout {
-  display: grid;
-  grid-template-columns: 260px 1fr 350px;
-  gap: 20px;
-  align-items: start;
+.top-search-btn:hover {
+  background: #e95d00;
+  transform: translateY(-1px);
 }
-
-/* --- Left Filters --- */
-.filters-sidebar {
-  background: var(--white);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-}
-
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-.filter-header h3 { font-size: 16px; color: var(--text-dark); }
-.clear-btn { background: none; border: none; color: var(--primary-blue); font-size: 12px; cursor: pointer; }
-
-.filter-group { margin-bottom: 25px; }
-.filter-group h4 { font-size: 14px; margin-bottom: 12px; color: var(--text-dark); }
-.filter-group label {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  margin-bottom: 10px;
-  color: var(--text-light);
-  cursor: pointer;
-}
-.filter-group input[type="checkbox"] { margin-right: 8px; }
-
-.price-slider { width: 100%; margin-bottom: 10px; }
-.price-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-light); }
-
-/* --- Center Providers List --- */
-.providers-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap; 
-  gap: 10px;
-}
-
-.providers-header h2 { font-size: 18px; color: var(--text-dark); }
-
-.sort-dropdown {
-  display: flex;
-  align-items: center; 
-  gap: 10px;
-  font-size: 14px;
-  color: var(--text-light);
-}
-
-.sort-select {
-  padding: 8px 30px 8px 20px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-dark);
-  background-color: #ffffff;
-  cursor: pointer;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px top 50%;
-  background-size: 10px auto;
-}
-
-.sort-select:focus {
-  border-color: var(--primary-blue);
-  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
-}
-
-.providers-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.provider-card {
-  background: var(--white);
-  padding: 20px;
-  border-radius: 12px;
-  display: flex;
-  gap: 20px;
-  border: 1px solid #e5e7eb;
-  transition: 0.2s;
-}
-
-.provider-card:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-
-.provider-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.provider-info { flex: 1; min-width: 0; }
-.provider-info h3 { font-size: 16px; color: var(--primary-blue); margin-bottom: 5px; }
-.provider-rating { font-size: 13px; margin-bottom: 8px; color: var(--text-light); }
-.provider-rating .star { color: #fbbf24; font-weight: 600; }
-.provider-tags { font-size: 12px; color: #10b981; margin-bottom: 5px; }
-.provider-tags span { color: var(--text-light); }
-.provider-distance { font-size: 12px; color: var(--text-light); }
-
-.provider-action {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-
-/* ❌ GALTI SUDHAAR: margin-right: 115px hata diya */
-.provider-action .price { 
-  font-size: 18px; 
-  font-weight: 700; 
-  color: var(--text-dark); 
-  white-space: nowrap; 
-}
-
-.provider-action .price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
-
-.book-now-btn {
-  background: var(--primary-orange);
-  color: var(--white);
-  border: none;
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-/* --- Right Map Area --- */
-.map-area {
-  background: #e5e7eb;
-  border-radius: 12px;
-  height: 600px;
-  position: sticky;
-  top: 20px;
-  overflow: hidden;
-  border: 1px solid #e5e7eb;
-}
-
-.map-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.8;
-}
-
 
 /* =========================================
-   RESPONSIVE DESIGN (Kuch bhi hide nahi hoga)
+   SERVICES HEADER
    ========================================= */
 
-/* --- Tablet View (Screens <= 1024px) --- */
-@media (max-width: 1024px) {
-  /* Map ko niche bhejne ke liye grid change */
-  .search-layout {
-    grid-template-columns: 240px 1fr; 
+.services-panel {
+  width: 100%;
+}
+
+.services-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.services-header h1 {
+  margin: 0 0 7px;
+  color: var(--text-dark, #172b4d);
+  font-size: clamp(23px, 2vw, 30px);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.services-header p {
+  margin: 0;
+  color: var(--text-light, #6b7280);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.services-count {
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border: 1px solid #ffe0cc;
+  border-radius: 20px;
+  background: #fff5ed;
+  color: var(--primary-orange, #ff6900);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================
+   SERVICE CARDS GRID
+   ========================================= */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* Each card contains an image div and footer div */
+
+.service-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow: hidden;
+  text-align: left;
+  border: 1px solid #dce4ee;
+  border-radius: 23px;
+  background: var(--white, #ffffff);
+  color: var(--text-dark, #172b4d);
+  cursor: pointer;
+
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+/* Image area */
+
+.service-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 0.94;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 17px;
+  background: white;
+}
+
+/*.service-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+  transition: transform 0.35s ease;
+*/
+
+/* Title and arrow area */
+
+.service-card-footer {
+  flex: 1;
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 4px 2px;
+}
+
+.service-card-footer h2 {
+  min-width: 0;
+  margin: 0;
+  color: #171717;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  transition: color 0.2s ease;
+}
+
+/* Arrow circle */
+
+.service-arrow {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  color: #333333;
+  font-size: 23px;
+  line-height: 1;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+/* =========================================
+   HOVER EFFECTS
+   ========================================= */
+
+.service-card:hover {
+  border: 2px solid var(--primary-orange, #ff6900);
+  padding: 9px;
+  box-shadow: 0 8px 22px rgba(31, 41, 55, 0.08);
+  transform: translateY(-3px);
+}
+
+.service-card:hover .service-image {
+  transform: scale(1.08);
+}
+
+.service-card:hover .service-arrow {
+  background: var(--primary-blue, #1769e0);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+.service-card:hover .service-card-footer h2 {
+  color: var(--primary-orange, #ff6900);
+}
+
+/* Keyboard accessibility */
+
+.service-card:focus-visible,
+.top-search-btn:focus-visible,
+.search-clear-btn:focus-visible {
+  outline: 3px solid var(--primary-blue, #1769e0);
+  outline-offset: 3px;
+}
+
+.service-card:active {
+  transform: scale(0.99);
+}
+
+/* =========================================
+   EMPTY SEARCH RESULTS
+   ========================================= */
+
+.services-empty {
+  padding: 55px 20px;
+  text-align: center;
+  border: 1px dashed #d5dce5;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.services-empty h2 {
+  margin: 0 0 10px;
+  color: var(--text-dark, #172b4d);
+  font-size: 21px;
+}
+
+.services-empty p {
+  margin: 0 0 20px;
+  color: var(--text-light, #6b7280);
+  font-size: 14px;
+}
+
+.reset-search-btn {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-orange, #ff6900);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================
+   LARGE LAPTOPS
+   ========================================= */
+
+@media (min-width: 1440px) {
+  .services-grid {
+    gap: 22px;
   }
-  
-  .map-area {
-    grid-column: 1 / -1; 
-    position: relative; 
-    top: 0;
-    height: 450px; /* Tablet par height */
-    margin-top: 20px;
+
+  .service-card {
+    padding: 12px;
+    border-radius: 25px;
+  }
+
+  .service-card:hover {
+    padding: 11px;
+  }
+
+  .service-card-footer {
+    min-height: 72px;
+    padding-top: 14px;
+  }
+
+  .service-card-footer h2 {
+    font-size: 15px;
+  }
+
+  .service-arrow {
+    width: 36px;
+    height: 36px;
   }
 }
 
-/* --- Mobile View (Screens <= 768px) --- */
-@media (max-width: 768px) {
-  
-  /* 1. Top Search Bar */
-  .top-search-container {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-  
-  .search-location, 
-  .search-input-wrapper, 
-  .top-search-btn {
-    width: 100%;
+/* =========================================
+   TABLET / SMALL LAPTOP
+   ========================================= */
+
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
   }
 
-  /* 2. Main Layout -> Single Column */
-  .search-layout {
-    grid-template-columns: 1fr; 
+  .service-card-footer h2 {
+    font-size: 14px;
+  }
+
+  .service-image-wrapper {
+    aspect-ratio: 1 / 0.9;
+  }
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+  .top-search-bar {
+    padding: 12px 0;
+    margin-bottom: 22px;
+  }
+
+  .top-search-container {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search-location {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-input-wrapper {
+    flex-basis: 0;
+  }
+
+  .top-search-btn {
+    min-width: 50px;
+    padding: 0 12px;
+  }
+
+  .services-header {
+    align-items: flex-start;
+    margin-bottom: 19px;
+  }
+
+  .services-header h1 {
+    font-size: 24px;
+  }
+
+  .services-header p {
+    font-size: 13px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 15px;
   }
 
-  /* 3. Filters Sidebar (Visible, list ke upar) */
-  .filters-sidebar {
-    display: block; 
-    width: 100%;
-    margin-bottom: 10px;
+  .service-card {
+    padding: 8px;
+    border-radius: 19px;
   }
 
-  /* 4. Providers Header & Sort */
-  .providers-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  .service-card:hover {
+    padding: 7px;
   }
 
-  .sort-dropdown {
-    width: 100%;
-    justify-content: space-between;
+  .service-image-wrapper {
+    border-radius: 13px;
+    aspect-ratio: 1 / 0.95;
   }
 
-  .sort-select {
-    flex: 1;
+  .service-card-footer {
+    min-height: 64px;
+    gap: 4px;
+    padding: 9px 2px 2px;
   }
 
-  /* 5. Provider Card Fix */
-  .provider-card {
-    flex-direction: row; /* Image bagal me, text bagal me */
-    padding: 15px;
-    gap: 12px;
-    position: relative; /* Button ko position karne ke liye */
+  .service-card-footer h2 {
+    font-size: 13px;
   }
 
-  .provider-img {
-    width: 60px;
-    height: 60px;
+  .service-arrow {
+    width: 29px;
+    height: 29px;
+    font-size: 20px;
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+  .search-page {
+    padding-bottom: 28px;
   }
 
-  .provider-info h3 {
-    font-size: 15px;
-    padding-right: 70px; /* Button ke liye jagah */
+  .services-header {
+    gap: 8px;
   }
 
-  .provider-rating { font-size: 12px; }
-  .provider-tags { font-size: 11px; }
-  .provider-distance { font-size: 11px; }
-
-  /* Action Area ko mobile par handle karein */
-  .provider-action {
-    flex-direction: column; 
-    justify-content: flex-end;
-    align-items: flex-end;
-    border-top: none; /* Line hatai */
-    padding-top: 0;
-    margin-top: 0;
-    width: auto;
-    position: absolute;
-    top: 15px;
-    right: 15px;
+  .services-header h1 {
+    font-size: 21px;
   }
 
-  .provider-action .price {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .provider-action .price span {
-    display: none; /* Starting text mobile par hide (space bachane ke liye) */
-  }
-
-  .book-now-btn {
-    padding: 6px 12px;
+  .services-header p {
+    max-width: 245px;
     font-size: 12px;
   }
 
-  /* 6. MAP AREA (Mobile par sabse niche) */
-  .map-area {
-    grid-column: 1 / -1; 
-    position: relative; 
-    top: 0;
-    height: 350px; 
-    margin-top: 15px;
+  .services-count {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .service-card {
+    padding: 8px;
+    border-radius: 18px;
+  }
+
+  .service-card:hover {
+    padding: 7px;
+  }
+
+  .service-image-wrapper {
+    aspect-ratio: 1 / 0.95;
+    border-radius: 12px;
+  }
+
+  .service-image {
+    padding: 3px;
+  }
+
+  .service-card-footer {
+    min-height: 61px;
+    padding-top: 9px;
+  }
+
+  .service-card-footer h2 {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .service-arrow {
+    width: 28px;
+    height: 28px;
+    font-size: 19px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .service-image,
+  .service-arrow,
+  .service-card-footer h2,
+  .top-search-btn {
+    transition: none;
+  }
+
+  .service-card:hover {
+    transform: none;
   }
 }
