@@ -1,0 +1,212 @@
+/* =========================================
+   DESKTOP NAVBAR STYLING
+   ========================================= */
+.navbar {
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 0;
+}
+
+.navbar__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* NAYA: Menu ko anchor karne ke liye */
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary-blue);
+}
+
+.navbar__logo-icon {
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-icon img {
+  height: 50px;
+  object-fit: contain;
+}
+
+.navbar__links {
+  display: flex;
+  list-style: none;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.search-input-location {
+  background: #e3dede;
+  padding: 10px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 350px;
+}
+
+.navbar__links li a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+  transition: 0.3s;
+  padding-bottom: 5px;
+  text-decoration: none;
+}
+
+/* Link ka color jab wo active ho */
+.active-link {
+  color: var(--primary-orange) !important;
+  font-weight: 600 !important;
+}
+
+.navbar__auth {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar__login {
+  background-color: var(--primary-orange);
+  color: var(--white);
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+.navbar__signup:hover { background-color: #e65c00; }
+
+.navbar__logout-btn {
+  background: transparent;
+  color: #e65c00;
+  border: 1px solid #e65c00;
+  padding: 9px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.navbar__logout-btn:hover { background: #e65c00; color: white; }
+
+/* Hamburger (Desktop par chhupa rahega) */
+.hamburger {
+  display: none; 
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  padding: 5px;
+  z-index: 1001; /* NAYA: Menu ke upar rahe */
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #1f2937;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Mobile ke liye login/signup links default me chhupe rahenge */
+.mobile-auth-links {
+  display: none;
+}
+
+
+
+/* =========================================
+   MOBILE RESPONSIVE NAVBAR
+   ========================================= */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; 
+  }
+
+  /* Desktop ke auth buttons mobile par chhupa dein */
+  .desktop-auth {
+    display: none; 
+  }
+
+  .navbar__links {
+    display: none; 
+    position: absolute;
+    top: 100%; /* NAYA: Navbar ke theek niche (dynamic) */
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    text-align: left; /* NAYA: Left aligned text better hai */
+    padding: 10px 0;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    z-index: 999;
+    gap: 0; /* NAYA: Gap hatao, padding use karenge */
+  }
+
+  /* Har link ko padding dein (click area bada) */
+  .navbar__links li {
+    width: 100%;
+    border-bottom: 1px solid #f3f4f6;
+  }
+
+  .navbar__links li a {
+    display: block;
+    padding: 15px 25px;
+    font-size: 15px;
+  }
+
+  .navbar__links li:last-child {
+    border-bottom: none;
+  }
+
+  /* Jab menu open ho */
+  .navbar__links.mobile-open {
+    display: flex;
+  }
+
+  /* Mobile menu ke andar login/signup */
+  .mobile-auth-links {
+    display: block;
+    border-top: none; /* NAYA: Upar line hatai */
+    padding: 15px 25px !important;
+  }
+
+  /* Mobile menu ke andar login/signup buttons */
+  .mobile-auth-links .navbar__login {
+    padding: 10px 0;
+    display: block;
+  }
+
+  .mobile-auth-links .navbar__signup {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .mobile-auth-links .navbar__logout-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* --- HAMBURGER ANIMATION (X mein badalna) --- */
+  .bar.open:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .bar.open:nth-child(2) {
+    opacity: 0;
+  }
+
+  .bar.open:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}

@@ -1,0 +1,356 @@
+/* HelpSupport.css */
+.help-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* --- Hero Section --- */
+.help-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 0 80px;
+}
+
+.help-hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.help-hero p {
+  font-size: 16px;
+  color: #cbd5e1;
+  margin-bottom: 30px;
+}
+
+/* --- SEARCH BAR --- */
+.help-search {
+  display: flex;
+  align-items: center;
+  background: white;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 6px;
+  border-radius: 50px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  gap: 5px; /* NAYA: elements ke beech gap */
+}
+
+.help-search .search-icon {
+  padding: 0 15px;
+  font-size: 18px;
+  flex-shrink: 0; /* NAYA: icon squeeze na ho */
+}
+
+.help-search input {
+  flex: 1;
+  min-width: 0; /* NAYA: input squeeze na ho */
+  border: none;
+  outline: none;
+  padding: 10px 0;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.help-search button {
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 40px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap; /* NAYA: button text wrap na ho */
+  flex-shrink: 0; /* NAYA: button squeeze na ho */
+}
+
+/* --- Quick Actions --- */
+.help-content {
+  margin-top: -40px; 
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.action-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-blue);
+}
+
+.action-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.action-card h3 {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.action-card p {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+/* --- FAQ Section --- */
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  font-size: 24px;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-item:hover {
+  border-color: #cbd5e1;
+}
+
+.faq-item.active {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.1);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px; /* NAYA: question aur icon ke beech gap */
+}
+
+.faq-question h4 {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin: 0;
+  flex: 1; /* NAYA: question ko jagah mile */
+}
+
+.faq-toggle {
+  font-size: 20px;
+  color: var(--primary-blue);
+  font-weight: bold;
+  flex-shrink: 0; /* NAYA: +/- icon squeeze na ho */
+  width: 24px;
+  text-align: center;
+}
+
+.faq-answer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.faq-answer p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (KUCH BHI HIDE NAHI HOGA)
+   ========================================= */
+
+/* --- Tablet View (Screens <= 992px) --- */
+@media (max-width: 992px) {
+  .help-hero {
+    padding: 50px 0 70px;
+  }
+
+  .help-hero h1 {
+    font-size: 32px;
+  }
+
+  /* Container ke andar padding taaki content kinare se na chipke */
+  .help-content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .quick-actions {
+    gap: 15px;
+  }
+
+  .action-card {
+    padding: 25px 15px;
+  }
+
+  .action-card h3 {
+    font-size: 16px;
+  }
+}
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  
+  /* 1. HERO SECTION */
+  .help-hero {
+    padding: 40px 15px 70px; /* NAYA: side padding */
+  }
+
+  .help-hero h1 {
+    font-size: 28px;
+  }
+
+  .help-hero p {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+
+  /* 2. SEARCH BAR - Stack karein, kuch hide nahi */
+  .help-search {
+    flex-direction: column;
+    border-radius: 12px;
+    background: transparent;
+    box-shadow: none;
+    gap: 10px;
+    padding: 0;
+  }
+
+  /* Icon ko bahar rakhein taaki input full width le */
+  .help-search .search-icon {
+    display: none; /* Sirf mobile par icon hata rahe hain, kyunki input ke andar laga denge */
+  }
+
+  /* Input ko card style dein */
+  .help-search input {
+    width: 100%;
+    background: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-size: 14px;
+    box-sizing: border-box; /* NAYA: padding ke baad width overflow na ho */
+  }
+
+  .help-search button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  /* 3. QUICK ACTIONS - 3 se 1 column */
+  .quick-actions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 35px;
+  }
+
+  /* Action card ko horizontal karein (icon left, text right) */
+  .action-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 18px 20px;
+    gap: 15px;
+  }
+
+  .action-icon {
+    margin-bottom: 0;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .action-card h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .action-card p {
+    font-size: 12px;
+  }
+
+  /* 4. FAQ SECTION */
+  .faq-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .faq-item {
+    padding: 15px;
+  }
+
+  .faq-question h4 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .faq-toggle {
+    font-size: 18px;
+  }
+
+  .faq-answer p {
+    font-size: 13px;
+  }
+}
+
+/* --- Very Small Devices (Screens <= 480px) --- */
+@media (max-width: 480px) {
+  .help-hero {
+    padding: 30px 12px 60px;
+  }
+
+  .help-hero h1 {
+    font-size: 24px;
+  }
+
+  .help-hero p {
+    font-size: 13px;
+  }
+
+  /* Action card: icon upar, text niche (chhoti screen par horizontal bhi ajeeb lagega) */
+  .action-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
+  }
+
+  .action-icon {
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  .faq-question h4 {
+    font-size: 14px;
+  }
+
+  .faq-answer p {
+    font-size: 12.5px;
+  }
+}

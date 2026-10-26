@@ -1,0 +1,379 @@
+/* MyBookings.css */
+.my-bookings-page {
+  padding: 40px 0 60px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 28px;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+}
+
+/* Tabs */
+.booking-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.tab-btn:hover {
+  background: #e5e7eb;
+}
+
+.tab-btn.active {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+/* Bookings List */
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-card {
+  background: var(--white);
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+
+/* Card Header */
+.card-header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px; /* NAYA: header items ke beech space */
+  border-bottom: 1px solid #f3f4f6;
+  background: #fdfdfd;
+}
+
+.header-left {
+  flex: 1; /* NAYA: header-left ko zyada jagah mile */
+  min-width: 0; /* NAYA: squeeze allow */
+}
+
+.header-left h3 {
+  font-size: 18px;
+  color: var(--text-dark);
+  margin: 5px 0;
+  word-break: break-word; /* NAYA: lamba text wrap */
+}
+
+.booking-id {
+  font-size: 12px;
+  color: var(--text-light);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  word-break: break-word; /* NAYA */
+}
+
+.header-left p {
+  font-size: 13px;
+  color: var(--text-light);
+  word-break: break-word; /* NAYA */
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap; /* NAYA: badge text wrap na ho */
+  flex-shrink: 0; /* NAYA: squeeze na ho */
+}
+
+.status-badge.on-the-way {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.status-badge.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Card Body */
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  gap: 10px; /* NAYA: label aur value ke beech space */
+}
+
+.info-row span {
+  color: var(--text-light);
+  flex-shrink: 0; /* NAYA: label squeeze na ho */
+}
+
+.info-row strong {
+  color: var(--text-dark);
+  text-align: right; /* NAYA: value right aligned */
+  word-break: break-word; /* NAYA */
+}
+
+/* Card Footer */
+.card-footer {
+  padding: 15px 20px;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  gap: 15px;
+  background: #fdfdfd;
+  align-items: center; /* NAYA */
+}
+
+.action-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  white-space: nowrap; /* NAYA: button text wrap na ho */
+}
+
+.action-btn.primary {
+  background: var(--primary-orange);
+  color: var(--white);
+  border: none;
+}
+.action-btn.primary:hover { background: #e65c00; }
+
+.action-btn.outline {
+  background: transparent;
+  border: 1px solid var(--primary-blue);
+  color: var(--primary-blue);
+}
+.action-btn.outline:hover { background: #eff6ff; }
+.action-btn.outline:disabled { border-color: #e5e7eb; color: #9ca3af; cursor: not-allowed; background: transparent; }
+
+.action-btn.text {
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  margin-left: auto; /* Desktop par right corner */
+}
+.action-btn.text:hover { color: var(--text-dark); text-decoration: underline; }
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  background: white;
+  border-radius: 12px;
+  border: 1px dashed #d1d5db;
+  color: var(--text-light);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (KUCH BHI HIDE NAHI HOGA)
+   ========================================= */
+
+/* --- Tablet View (Screens <= 992px) --- */
+@media (max-width: 992px) {
+  .page-title {
+    font-size: 26px;
+  }
+
+  .card-header {
+    padding: 18px;
+  }
+
+  .card-body {
+    padding: 18px;
+  }
+
+  .card-footer {
+    padding: 15px 18px;
+    gap: 12px;
+  }
+
+  .action-btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Page Padding */
+  .my-bookings-page {
+    padding: 20px 0 40px;
+  }
+
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  /* 2. Tabs - Scrollable, kuch hide nahi */
+  .booking-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    gap: 8px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* NAYA: scroll hint (fade effect) */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .booking-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* 3. Card Header - Column */
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .header-left h3 {
+    font-size: 16px;
+  }
+
+  .status-badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  /* 4. Card Body */
+  .card-body {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .info-row {
+    font-size: 13px;
+  }
+
+  /* 5. Card Footer - Buttons Stack */
+  .card-footer {
+    padding: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Primary aur Outline - Half width */
+  .action-btn.primary,
+  .action-btn.outline {
+    flex: 1;
+    text-align: center;
+    padding: 10px 10px;
+    font-size: 13px;
+    min-width: 0; /* NAYA: button squeeze allow */
+  }
+
+  /* Text button - Full width, margin reset */
+  .action-btn.text {
+    width: 100%;
+    margin-left: 0; /* NAYA: right corner se hatao */
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #f3f4f6;
+    margin-top: 5px;
+    order: 3; /* NAYA: text button sabse niche */
+  }
+
+  /* 6. Empty State */
+  .empty-state {
+    padding: 30px 15px;
+    font-size: 14px;
+  }
+}
+
+/* --- Very Small Devices (Screens <= 480px) --- */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 22px;
+  }
+
+  .card-header {
+    padding: 12px;
+  }
+
+  .header-left h3 {
+    font-size: 15px;
+  }
+
+  .booking-id {
+    font-size: 11px;
+  }
+
+  .header-left p {
+    font-size: 12px;
+  }
+
+  /* Info rows - Label upar, Value niche */
+  .info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 8px;
+    margin-bottom: 5px;
+  }
+
+  .info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .info-row strong {
+    text-align: left; /* NAYA: column mein left align */
+  }
+
+  /* Buttons - Full width */
+  .action-btn.primary,
+  .action-btn.outline {
+    width: 100%;
+    flex: none;
+  }
+
+  .card-footer {
+    padding: 12px;
+  }
+}
