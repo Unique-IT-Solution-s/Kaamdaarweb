@@ -1,0 +1,240 @@
+/* OTP.css */
+.otp-card {
+  background: var(--white);
+  width: 100%;
+  max-width: 400px;
+  min-height: 600px; /* NAYA: Fixed height hata kar min-height kiya */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Blue Header Area */
+.otp-blue-header {
+  background: #1a56db; 
+  height: 180px; /* Thoda kam kiya */
+  flex-shrink: 0; /* NAYA: Header squeeze na ho */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+/* Logo ke peeche ka safed box */
+.logo-box {
+  background: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.otp-logo {
+  height: 35px;
+  object-fit: contain;
+}
+
+/* White Body Area */
+.otp-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.otp-body h2 {
+  font-size: 24px;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.otp-subtext {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.otp-subtext strong {
+  color: var(--text-dark);
+}
+
+/* OTP Inputs */
+.otp-inputs {
+  display: flex;
+  justify-content: space-between; /* NAYA: Boxes barabar jagah lenge */
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.otp-inputs input {
+  width: 100%; /* NAYA: Flexible width */
+  max-width: 60px; /* Max limit */
+  height: 60px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  background: #f0f5ff; 
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.otp-inputs input:focus {
+  border: 2px solid var(--primary-blue);
+  background: var(--white);
+  box-shadow: 0 4px 10px rgba(26, 86, 219, 0.1);
+}
+
+.resend-text {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.resend-text strong {
+  color: var(--text-dark);
+}
+
+/* Footer Button */
+.otp-footer {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.auth-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+
+/* Notification (Toast) */
+.otp-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 9999;
+  border-left: 4px solid #10b981;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (KUCH BHI HIDE NAHI HOGA)
+   ========================================= */
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  .otp-card {
+    max-width: 100%;
+    min-height: auto; /* NAYA: Keyboard khulne par fit ho jaye */
+    border-radius: 16px;
+  }
+
+  .otp-blue-header {
+    height: 150px; /* Mobile par chhota header */
+  }
+
+  .otp-logo {
+    height: 30px;
+  }
+
+  .otp-body {
+    padding: 25px 20px;
+  }
+
+  .otp-body h2 {
+    font-size: 22px;
+  }
+
+  .otp-subtext {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .otp-inputs input {
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .auth-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* --- Very Small Devices (Screens <= 480px) --- */
+@media (max-width: 480px) {
+  .otp-blue-header {
+    height: 130px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .logo-box {
+    padding: 10px 15px;
+  }
+
+  .otp-body {
+    padding: 20px 15px;
+  }
+
+  .otp-body h2 {
+    font-size: 20px;
+  }
+
+  .otp-inputs {
+    gap: 8px; /* Chhoti screen par gap kam */
+  }
+
+  .otp-inputs input {
+    height: 45px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+}
+
+/* --- Landscape Mobile / Chhoti Height (Screens <= 600px height) --- */
+@media (max-height: 650px) {
+  .otp-blue-header {
+    height: 100px; /* Landscape me header chhota */
+  }
+  .otp-body {
+    padding: 15px 20px;
+  }
+  .otp-inputs {
+    margin-bottom: 10px;
+  }
+}

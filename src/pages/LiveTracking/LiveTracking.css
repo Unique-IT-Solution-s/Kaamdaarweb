@@ -1,0 +1,356 @@
+/* LiveTracking.css */
+.tracking-page {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.tracking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+  flex-wrap: wrap; /* NAYA: mobile par wrap ho jaye */
+}
+
+.tracking-header h2 {
+  font-size: 22px;
+  color: var(--text-dark);
+}
+
+.status-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap; /* NAYA: badge text wrap na ho */
+  flex-shrink: 0;
+}
+
+.tracking-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+/* --- Left Sidebar --- */
+.tracking-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.provider-info-card, .timeline-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.provider-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.tracking-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0; /* NAYA: avatar squeeze na ho */
+}
+
+.provider-top h3 { font-size: 18px; color: var(--text-dark); margin-bottom: 3px; }
+.rating { font-size: 13px; color: #fbbf24; font-weight: 600; }
+
+.eta-box {
+  text-align: center;
+  border-top: 1px dashed #e5e7eb;
+  border-bottom: 1px dashed #e5e7eb;
+  padding: 15px 0;
+  margin-bottom: 15px;
+}
+
+.eta-box p { font-size: 13px; color: var(--text-light); margin-bottom: 5px; }
+.eta-box h2 { font-size: 28px; color: var(--primary-blue); }
+
+.contact-btn {
+  width: 100%;
+  background: #eff6ff;
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- Timeline --- */
+.timeline-card h3 { font-size: 16px; color: var(--text-dark); margin-bottom: 20px; }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 15px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 15px;
+  bottom: -25px;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timeline-item:last-child::before { display: none; }
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d1d5db;
+  margin-top: 4px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0; /* NAYA */
+}
+
+.timeline-item.completed .timeline-dot { background: #10b981; }
+.timeline-item.active .timeline-dot { background: var(--primary-orange); box-shadow: 0 0 0 4px #ffedd5; }
+
+.timeline-content h4 { font-size: 14px; color: var(--text-dark); margin-bottom: 3px; }
+.timeline-content p { font-size: 12px; color: var(--text-light); }
+.timeline-item.active .timeline-content h4 { color: var(--primary-orange); }
+
+/* --- Map Area --- */
+.tracking-map-area {
+  background: #e5e7eb;
+  border-radius: 12px;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.map-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.map-marker {
+  position: absolute;
+  font-size: 30px;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.provider-marker { top: 40%; left: 30%; animation: pulse 2s infinite; }
+.user-marker { bottom: 20%; right: 20%; }
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 107, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+}
+
+.back-to-home-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: var(--white);
+  color: var(--text-dark);
+  border: 1px solid #e5e7eb;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (KUCH BHI HIDE NAHI HOGA)
+   ========================================= */
+
+/* --- Tablet View (Screens <= 1024px) --- */
+@media (max-width: 1024px) {
+  /* Sidebar thoda chhota karo */
+  .tracking-layout {
+    grid-template-columns: 300px 1fr;
+  }
+  
+  .tracking-map-area {
+    height: 500px;
+  }
+  
+  .provider-info-card, .timeline-card {
+    padding: 20px;
+  }
+}
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Page Padding */
+  .tracking-page {
+    padding: 20px 0;
+  }
+
+  /* 2. HEADER */
+  .tracking-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tracking-header h2 {
+    font-size: 18px;
+  }
+
+  .status-badge {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  /* 3. LAYOUT - Single column (Sidebar upar, Map niche) */
+  .tracking-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /* 4. SIDEBAR - sab kuch visible rahe */
+  .tracking-sidebar {
+    gap: 15px;
+  }
+
+  .provider-info-card, .timeline-card {
+    padding: 18px;
+  }
+
+  /* 5. PROVIDER INFO */
+  .tracking-avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .provider-top h3 {
+    font-size: 16px;
+  }
+
+  .rating {
+    font-size: 12px;
+  }
+
+  .eta-box h2 {
+    font-size: 24px;
+  }
+
+  /* 6. TIMELINE */
+  .timeline-card h3 {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .timeline {
+    gap: 20px;
+  }
+
+  .timeline-content h4 {
+    font-size: 13px;
+  }
+
+  .timeline-content p {
+    font-size: 11px;
+  }
+
+  /* Timeline line adjust */
+  .timeline-item::before {
+    bottom: -20px;
+  }
+
+  /* 7. MAP AREA - Niche aayega, height kam */
+  .tracking-map-area {
+    height: 350px;
+    width: 100%;
+  }
+
+  /* Map markers ka size chhota */
+  .map-marker {
+    font-size: 24px;
+    padding: 6px;
+  }
+
+  /* 8. BACK BUTTON - Bottom full width */
+  .back-to-home-btn {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    width: calc(100% - 30px);
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* --- Very Small Devices (Screens <= 480px) --- */
+@media (max-width: 480px) {
+  .tracking-header h2 {
+    font-size: 16px;
+  }
+
+  .tracking-avatar {
+    width: 45px;
+    height: 45px;
+  }
+
+  .provider-top {
+    gap: 12px;
+  }
+
+  .provider-top h3 {
+    font-size: 15px;
+  }
+
+  .eta-box h2 {
+    font-size: 22px;
+  }
+
+  .contact-btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .timeline-content h4 {
+    font-size: 12.5px;
+  }
+
+  /* Map aur chhota */
+  .tracking-map-area {
+    height: 300px;
+  }
+
+  .map-marker {
+    font-size: 20px;
+    padding: 5px;
+  }
+}

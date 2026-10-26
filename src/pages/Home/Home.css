@@ -1,0 +1,804 @@
+/* =========================================
+   HERO SECTION (Background Image with Overlay)
+   ========================================= */
+
+.hero {
+  background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Image */
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1; 
+  
+  mask-image: linear-gradient(to right, transparent 0%, black 50%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 50%);
+}
+
+/* Container for content above image */
+.hero__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+  min-height: 500px;
+}
+
+.hero__content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.hero__badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  color: #cbd5e1;
+}
+
+.hero__title {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.text-orange {
+  color: var(--primary-orange);
+}
+
+.hero__subtitle {
+  font-size: 16px;
+  color: #cbd5e1;
+  margin-bottom: 35px;
+  line-height: 1.6;
+  max-width: 550px;
+}
+
+/* --- Search Box --- */
+.hero__search-box {
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+}
+
+.search-input-group {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  gap: 8px;
+  flex: 1;
+  min-width: 0; /* NAYA: input squeeze na ho */
+}
+
+.search-input-group--main {
+  flex: 2;
+}
+
+.search-input-group .icon {
+  font-size: 18px;
+  flex-shrink: 0; /* NAYA: icon squeeze na ho */
+}
+
+.location-select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  width: 100%;
+}
+
+.search-divider {
+  width: 1px;
+  height: 30px;
+  background-color: #e5e7eb;
+  flex-shrink: 0;
+}
+
+.search-input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+  color: var(--text-dark);
+  font-family: 'Poppins', sans-serif;
+}
+
+.search-btn {
+  background-color: var(--primary-orange);
+  color: #ffffff;
+  border: none;
+  padding: 14px 35px;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+  flex-shrink: 0; /* NAYA: button squeeze na ho */
+}
+
+.search-btn:hover {
+  background-color: #e65c00;
+}
+
+/* --- Floating Card --- */
+.hero__image-area {
+  flex: 1;
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 50px;
+}
+
+.floating-card {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: var(--text-dark);
+  margin-right: 40px;
+}
+
+.floating-icon {
+  font-size: 22px;
+  background: #e0f2fe;
+  color: #0284c7;
+  padding: 8px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.floating-card h4 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.floating-card p {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+/* --- Features Bar --- */
+.hero__features-bar {
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__features-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-icon {
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 50%;
+  color: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.feature-item h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.feature-item p {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+/* =========================================
+   POPULAR SERVICES SECTION
+   ========================================= */
+.services-section {
+  padding: 60px 0;
+  background-color: var(--white);
+}
+
+.services-header {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.services-header h2 {
+  font-size: 28px;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.services-header p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.view-all-btn {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  text-decoration: underline;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+  border-color: #d1d5db;
+}
+
+.service-card__icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.service-card__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+/* =========================================
+   HOW IT WORKS
+   ========================================= */
+.how-it-works {
+  padding: 60px 0;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+
+.how-it-works__header {
+  margin-bottom: 40px;
+}
+
+.how-it-works__header h2 {
+  font-size: 28px;
+  color: #142f53;
+  margin-bottom: 5px;
+}
+
+.how-it-works__header p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.step-card {
+  flex: 1;
+  max-width: 200px;
+}
+
+.step-icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin: 0 auto 15px;
+  color: white;
+}
+
+.step-icon-circle.blue { background: #1a56db; }
+.step-icon-circle.orange { background: #f59e0b; }
+.step-icon-circle.teal { background: #0ea5e9; }
+.step-icon-circle.yellow { background: #eab308; }
+
+.step-card h3 {
+  font-size: 16px;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+}
+
+.step-card p {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.step-arrow {
+  color: #93c5fd;
+  font-size: 20px;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   VERIFIED PROFESSIONALS & STATS
+   ========================================= */
+.verified-section {
+  padding: 60px 0;
+  background: var(--white);
+}
+
+.verified-banner {
+  display: flex;
+  background: #f0f9ff; 
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.verified-image {
+  flex: 1;
+  min-height: 250px;
+}
+
+.verified-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.verified-content {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.verified-content h2 {
+  font-size: 28px;
+  color: #142f53;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.verified-features {
+  list-style: none;
+  margin-bottom: 25px;
+  padding: 0;
+}
+
+.verified-features li {
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.book-now-orange-btn {
+  background: var(--primary-orange);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+}
+.book-now-orange-btn:hover { background: #e65c00; }
+
+/* Stats Boxes */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.stat-box {
+  background: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 24px;
+  color: var(--primary-orange);
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.stat-box p {
+  font-size: 13px;
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* =========================================
+   REVIEWS SECTION
+   ========================================= */
+.reviews-section {
+  padding: 60px 0;
+  background-color: var(--white);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.review-card {
+  background: #fdfdfd;
+  border: 1px solid #e5e7eb;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.review-stars {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.review-text {
+  font-size: 15px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background: #e0e7ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.review-user h4 {
+  font-size: 15px;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.review-user p {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+/* =========================================
+   PROVIDER BANNER
+   ========================================= */
+.provider-banner {
+  background: #0f172a;
+  padding: 40px 0;
+  color: #ffffff;
+}
+
+.provider-banner__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+  gap: 20px;
+}
+
+.provider-banner__content h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.provider-banner__content p {
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.provider-banner__btn {
+  background-color: var(--primary-orange);
+  color: var(--white);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.provider-banner__btn:hover {
+  background-color: #e65c00;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (KUCH BHI HIDE NAHI HOGA)
+   ========================================= */
+
+/* --- Tablet View (Screens <= 1024px) --- */
+@media (max-width: 1024px) {
+  .hero__title { font-size: 46px; }
+  
+  /* Services: 6 → 3 columns */
+  .services-grid { grid-template-columns: repeat(3, 1fr); }
+  
+  /* Reviews: 3 → 2 columns */
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  .verified-content { padding: 30px; }
+  
+  /* Floating card thoda chhota */
+  .floating-card { margin-right: 20px; }
+}
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  
+  /* 1. HERO SECTION */
+  .hero__container {
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 30px;
+    text-align: center;
+    min-height: auto;
+  }
+  
+  .hero-bg-img {
+    width: 100%;
+    opacity: 0.2;
+    object-position: center;
+  }
+  
+  .hero__title { font-size: 36px; }
+  .hero__subtitle { 
+    margin: 0 auto 25px auto; 
+    max-width: 100%;
+  }
+  
+  /* Search Box - Stack, kuch hide nahi */
+  .hero__search-box {
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 15px;
+    gap: 10px;
+  }
+  
+  /* Divider visible rakhein lekin horizontal bana dein */
+  .search-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+  
+  .search-input-group {
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  
+  .search-btn {
+    width: 100%;
+    border-radius: 8px;
+    padding: 14px;
+  }
+  
+  /* Floating Card - center mein */
+  .hero__image-area {
+    justify-content: center;
+    padding-top: 20px;
+    width: 100%;
+  }
+  
+  .floating-card {
+    margin-right: 0;
+  }
+  
+  /* Features Bar - 2x2 grid */
+  .hero__features-container {
+    justify-content: center;
+    gap: 15px;
+  }
+  .feature-item { 
+    width: calc(50% - 10px); 
+    justify-content: center; 
+  }
+
+  /* 2. SERVICES SECTION */
+  .services-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .view-all-btn {
+    position: static; 
+    margin-top: 5px;
+  }
+  
+  /* Services Grid: 2 columns */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .service-card { padding: 15px 10px; }
+  .service-card__icon { font-size: 26px; }
+  .service-card__title { font-size: 12px; }
+
+  /* 3. HOW IT WORKS */
+  .steps-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .step-card { 
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .step-arrow {
+    transform: rotate(90deg);
+    margin: 5px 0;
+  }
+
+  /* 4. VERIFIED BANNER */
+  .verified-banner { 
+    flex-direction: column; 
+  }
+  
+  .verified-image { 
+    min-height: 200px; 
+    width: 100%;
+  }
+  
+  .verified-content { 
+    padding: 25px 20px; 
+    text-align: center; 
+  }
+  
+  .verified-features { 
+    text-align: left; 
+    display: inline-block; 
+  }
+  
+  .book-now-orange-btn { margin: 0 auto; }
+
+  /* 5. STATS - 2 columns (4 nahi, warna bahut lamba) */
+  .stats-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .stat-box { padding: 15px 10px; }
+  .stat-box h3 { font-size: 20px; }
+  .stat-box p { font-size: 12px; }
+
+  /* 6. REVIEWS - 1 column */
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  /* Reviews header - inline style override */
+  .reviews-section .services-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px;
+  }
+
+  /* 7. PROVIDER BANNER */
+  .provider-banner__container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* --- Very Small Devices (Screens <= 480px) --- */
+@media (max-width: 480px) {
+  .hero__title { font-size: 30px; }
+  .hero__subtitle { font-size: 14px; }
+  
+  /* Features ab 1 column (kyunki 2 columns bhi tight lagenge) */
+  .feature-item {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  /* Stats wapas 1 column? Nahi - 2 columns better hai */
+  .stats-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .stat-box h3 { font-size: 18px; }
+  
+  /* Service card icons chhote */
+  .service-card__icon { font-size: 22px; }
+  .service-card__title { font-size: 11px; }
+}
