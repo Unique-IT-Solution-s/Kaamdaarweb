@@ -154,13 +154,20 @@ const Navbar = () => {
             </>
           )}
         </div>
-
-        {/* Hamburger Icon (Mobile only) */}
-        <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
-          <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
-          <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
-        </div>
+        
+{/* Hamburger Icon (Mobile only) */}
+<button
+  type="button"
+  className="hamburger"
+  onClick={() => setIsMenuOpen(!isMenuOpen)}
+  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+  aria-expanded={isMenuOpen}
+  aria-controls="navbar-menu"
+>
+  <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
+  <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
+  <span className={isMenuOpen ? 'bar open' : 'bar'}></span>
+</button>
 
       </div>
     </nav>

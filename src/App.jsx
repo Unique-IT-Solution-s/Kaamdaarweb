@@ -14,6 +14,7 @@ import Profile from './pages/Profile/Profile';
 import HelpSupport from './pages/HelpSupport/HelpSupport';
 import Login from './pages/login/login';
 import OTP from './pages/otp/otp';
+import Register from "./pages/Register/Register";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -57,6 +58,7 @@ function App() {
           <Route path="/help" element={<HelpSupport />} />
           <Route path="/login" element={<Login />} />
           <Route path="/otp" element={<OTP />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Layout>
 
