@@ -1,4 +1,5 @@
 
+
 /* =========================================
    SEARCH PAGE
    ========================================= */
@@ -994,4 +995,362 @@ body.filters-drawer-open {
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
+}
+
+/* Search.css */
+.search-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+/* --- Top Search Bar --- */
+.top-search-bar {
+  background: var(--white);
+  padding: 15px 0;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.top-search-container {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap; 
+}
+
+.search-location {
+  border: 1px solid #e5e7eb;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  white-space: nowrap; 
+}
+
+.search-input-wrapper {
+  flex: 1;
+  min-width: 200px; 
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 15px;
+  background: #fff;
+}
+
+.search-input-wrapper input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.top-search-btn {
+  background: var(--primary-orange);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* --- Main Layout (Desktop) --- */
+.search-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 350px;
+  gap: 20px;
+  align-items: start;
+}
+
+/* --- Left Filters --- */
+.filters-sidebar {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.filter-header h3 { font-size: 16px; color: var(--text-dark); }
+.clear-btn { background: none; border: none; color: var(--primary-blue); font-size: 12px; cursor: pointer; }
+
+.filter-group { margin-bottom: 25px; }
+.filter-group h4 { font-size: 14px; margin-bottom: 12px; color: var(--text-dark); }
+.filter-group label {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+}
+.filter-group input[type="checkbox"] { margin-right: 8px; }
+
+.price-slider { width: 100%; margin-bottom: 10px; }
+.price-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-light); }
+
+/* --- Center Providers List --- */
+.providers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; 
+  gap: 10px;
+}
+
+.providers-header h2 { font-size: 18px; color: var(--text-dark); }
+
+.sort-dropdown {
+  display: flex;
+  align-items: center; 
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.sort-select {
+  padding: 8px 30px 8px 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236b7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  background-size: 10px auto;
+}
+
+.sort-select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+}
+
+.providers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.provider-card {
+  background: var(--white);
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  gap: 20px;
+  border: 1px solid #e5e7eb;
+  transition: 0.2s;
+}
+
+.provider-card:hover { box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+.provider-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.provider-info { flex: 1; min-width: 0; }
+.provider-info h3 { font-size: 16px; color: var(--primary-blue); margin-bottom: 5px; }
+.provider-rating { font-size: 13px; margin-bottom: 8px; color: var(--text-light); }
+.provider-rating .star { color: #fbbf24; font-weight: 600; }
+.provider-tags { font-size: 12px; color: #10b981; margin-bottom: 5px; }
+.provider-tags span { color: var(--text-light); }
+.provider-distance { font-size: 12px; color: var(--text-light); }
+
+.provider-action {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+/* ❌ GALTI SUDHAAR: margin-right: 115px hata diya */
+.provider-action .price { 
+  font-size: 18px; 
+  font-weight: 700; 
+  color: var(--text-dark); 
+  white-space: nowrap; 
+}
+
+.provider-action .price span { font-size: 12px; font-weight: 400; color: var(--text-light); }
+
+.book-now-btn {
+  background: var(--primary-orange);
+  color: var(--white);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* --- Right Map Area --- */
+.map-area {
+  background: #e5e7eb;
+  border-radius: 12px;
+  height: 600px;
+  position: sticky;
+  top: 20px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.map-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN (Kuch bhi hide nahi hoga)
+   ========================================= */
+
+/* --- Tablet View (Screens <= 1024px) --- */
+@media (max-width: 1024px) {
+  /* Map ko niche bhejne ke liye grid change */
+  .search-layout {
+    grid-template-columns: 240px 1fr; 
+  }
+  
+  .map-area {
+    grid-column: 1 / -1; 
+    position: relative; 
+    top: 0;
+    height: 450px; /* Tablet par height */
+    margin-top: 20px;
+  }
+}
+
+/* --- Mobile View (Screens <= 768px) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Top Search Bar */
+  .top-search-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .search-location, 
+  .search-input-wrapper, 
+  .top-search-btn {
+    width: 100%;
+  }
+
+  /* 2. Main Layout -> Single Column */
+  .search-layout {
+    grid-template-columns: 1fr; 
+    gap: 15px;
+  }
+
+  /* 3. Filters Sidebar (Visible, list ke upar) */
+  .filters-sidebar {
+    display: block; 
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* 4. Providers Header & Sort */
+  .providers-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sort-dropdown {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+
+  /* 5. Provider Card Fix */
+  .provider-card {
+    flex-direction: row; /* Image bagal me, text bagal me */
+    padding: 15px;
+    gap: 12px;
+    position: relative; /* Button ko position karne ke liye */
+  }
+
+  .provider-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .provider-info h3 {
+    font-size: 15px;
+    padding-right: 70px; /* Button ke liye jagah */
+  }
+
+  .provider-rating { font-size: 12px; }
+  .provider-tags { font-size: 11px; }
+  .provider-distance { font-size: 11px; }
+
+  /* Action Area ko mobile par handle karein */
+  .provider-action {
+    flex-direction: column; 
+    justify-content: flex-end;
+    align-items: flex-end;
+    border-top: none; /* Line hatai */
+    padding-top: 0;
+    margin-top: 0;
+    width: auto;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .provider-action .price {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  .provider-action .price span {
+    display: none; /* Starting text mobile par hide (space bachane ke liye) */
+  }
+
+  .book-now-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* 6. MAP AREA (Mobile par sabse niche) */
+  .map-area {
+    grid-column: 1 / -1; 
+    position: relative; 
+    top: 0;
+    height: 350px; 
+    margin-top: 15px;
+  }
 }
