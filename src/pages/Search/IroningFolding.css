@@ -1,0 +1,501 @@
+.ironing-page {
+  --service-orange: #ff6900;
+  --service-orange-dark: #e95d00;
+  --service-text: #202938;
+  --service-muted: #687386;
+  --service-border: #e8edf2;
+  --service-green: #179b62;
+  --service-red: #e34b4b;
+
+  background: #fff;
+  color: var(--service-text);
+  font-family: inherit;
+}
+
+.ironing-page * {
+  box-sizing: border-box;
+}
+
+.ironing-main {
+  padding: 32px 24px 80px;
+}
+
+.ironing-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Breadcrumb */
+
+.ironing-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 42px;
+  color: #929baa;
+  font-size: 13px;
+}
+
+.ironing-breadcrumb a {
+  color: var(--service-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ironing-breadcrumb a:hover {
+  color: var(--service-orange);
+}
+
+.ironing-current {
+  color: var(--service-orange);
+  font-weight: 600;
+}
+
+/* Hero Section */
+
+.ironing-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 90px;
+}
+
+.ironing-hero-content {
+  max-width: 590px;
+}
+
+.ironing-tag,
+.ironing-promo-tag {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 13px;
+  border: 1px solid #ffe0cc;
+  border-radius: 30px;
+  background: #fff5ee;
+  color: var(--service-orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.ironing-hero-content h1 {
+  margin: 0 0 22px;
+  color: var(--service-text);
+  font-size: clamp(38px, 4.4vw, 58px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.12;
+}
+
+.ironing-hero-content h1 span {
+  color: var(--service-orange);
+}
+
+.ironing-hero-content > p {
+  max-width: 530px;
+  margin: 0;
+  color: var(--service-muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.ironing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.ironing-primary-btn,
+.ironing-secondary-btn,
+.ironing-promo-btn {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 22px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.ironing-primary-btn,
+.ironing-promo-btn {
+  background: var(--service-orange);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(255, 105, 0, 0.15);
+}
+
+.ironing-primary-btn:hover,
+.ironing-promo-btn:hover {
+  transform: translateY(-2px);
+  background: var(--service-orange-dark);
+}
+
+.ironing-secondary-btn {
+  border: 1px solid var(--service-border);
+  background: #fff;
+  color: var(--service-text);
+}
+
+.ironing-secondary-btn:hover {
+  border-color: var(--service-orange);
+  color: var(--service-orange);
+}
+
+.ironing-hero-image {
+  min-width: 0;
+}
+
+.ironing-hero-image img {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border-radius: 22px;
+  background: #fff4ec;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Included and Not Included */
+
+.ironing-details {
+  margin-bottom: 90px;
+}
+
+.ironing-section-heading {
+  max-width: 650px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.ironing-section-heading > span {
+  color: var(--service-orange);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.ironing-section-heading h2 {
+  margin: 12px 0;
+  color: var(--service-text);
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.ironing-section-heading p {
+  margin: 0;
+  color: var(--service-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.ironing-lists {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.ironing-list-card {
+  padding: 30px;
+  border: 1px solid var(--service-border);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgba(24, 39, 58, 0.035);
+}
+
+.ironing-list-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 25px;
+  color: var(--service-text);
+  font-size: 19px;
+  font-weight: 750;
+}
+
+.ironing-list-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.ironing-list-icon.included {
+  background: #e9f8ef;
+  color: var(--service-green);
+}
+
+.ironing-list-icon.excluded {
+  background: #fff0f0;
+  color: var(--service-red);
+}
+
+.ironing-list-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ironing-list-card li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #566173;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ironing-check,
+.ironing-cross {
+  display: grid;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+  place-items: center;
+  margin-top: 1px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ironing-check {
+  background: #e9f8ef;
+  color: var(--service-green);
+}
+
+.ironing-cross {
+  background: #fff0f0;
+  color: var(--service-red);
+}
+
+/* Bottom Promotional Section */
+
+.ironing-promo {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 55px;
+  padding: 40px;
+  border-radius: 22px;
+  background: linear-gradient(
+    115deg,
+    #fff4eb,
+    #fff9f5 58%,
+    #eef6ff
+  );
+}
+
+.ironing-promo-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.ironing-promo-image img {
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  max-height: 300px;
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.ironing-promo-content {
+  max-width: 500px;
+}
+
+.ironing-promo-tag {
+  margin-bottom: 15px;
+  background: #fff;
+}
+
+.ironing-promo-content h2 {
+  margin: 0 0 16px;
+  color: var(--service-text);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.ironing-promo-content p {
+  margin: 0;
+  color: var(--service-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.ironing-promo-btn {
+  margin-top: 25px;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .ironing-hero {
+    gap: 35px;
+  }
+
+  .ironing-hero-image img {
+    height: 370px;
+  }
+
+  .ironing-promo {
+    gap: 30px;
+    padding: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ironing-main {
+    padding: 25px 20px 60px;
+  }
+
+  .ironing-breadcrumb {
+    margin-bottom: 30px;
+  }
+
+  .ironing-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 65px;
+  }
+
+  .ironing-hero-content {
+    max-width: 100%;
+  }
+
+  .ironing-hero-content h1 {
+    letter-spacing: -1.3px;
+  }
+
+  .ironing-hero-image img {
+    height: 370px;
+  }
+
+  .ironing-details {
+    margin-bottom: 65px;
+  }
+
+  .ironing-lists {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .ironing-list-card {
+    padding: 25px;
+  }
+
+  .ironing-promo {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 30px 25px;
+  }
+
+  .ironing-promo-image img {
+    max-height: 240px;
+  }
+
+  .ironing-promo-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .ironing-main {
+    padding: 20px 16px 45px;
+  }
+
+  .ironing-breadcrumb {
+    gap: 7px;
+    margin-bottom: 25px;
+    font-size: 11px;
+  }
+
+  .ironing-hero-content h1 {
+    font-size: 37px;
+  }
+
+  .ironing-hero-content > p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .ironing-actions {
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .ironing-primary-btn,
+  .ironing-secondary-btn {
+    width: 100%;
+  }
+
+  .ironing-hero-image img {
+    height: 280px;
+    border-radius: 17px;
+  }
+
+  .ironing-section-heading {
+    margin-bottom: 28px;
+  }
+
+  .ironing-section-heading h2 {
+    font-size: 30px;
+  }
+
+  .ironing-section-heading p {
+    font-size: 13px;
+  }
+
+  .ironing-list-card {
+    padding: 21px 17px;
+  }
+
+  .ironing-list-card h3 {
+    font-size: 17px;
+  }
+
+  .ironing-list-card li {
+    gap: 9px;
+    font-size: 13px;
+  }
+
+  .ironing-promo {
+    gap: 22px;
+    padding: 25px 19px;
+    border-radius: 17px;
+  }
+
+  .ironing-promo-image img {
+    max-height: 180px;
+  }
+
+  .ironing-promo-content h2 {
+    font-size: 28px;
+  }
+
+  .ironing-promo-content p {
+    font-size: 13px;
+  }
+
+  .ironing-promo-btn {
+    width: 100%;
+  }
+}

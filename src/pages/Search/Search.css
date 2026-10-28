@@ -539,3 +539,459 @@
     transform: none;
   }
 }
+
+/* =========================================
+   FILTER BUTTON
+   ========================================= */
+
+.filters-open-btn {
+  position: relative;
+  min-height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 16px;
+  flex-shrink: 0;
+  border: 1px solid #ff6900;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #ff6900;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filters-open-btn:hover {
+  background: #fff4eb;
+}
+
+.filters-open-btn > span:first-child {
+  font-size: 21px;
+}
+
+.filters-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 5px;
+  border-radius: 50%;
+  background: #ff6900;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.filters-open-btn:focus-visible,
+.filters-close-btn:focus-visible,
+.filters-clear-btn:focus-visible,
+.filters-apply-btn:focus-visible,
+.filters-reset-footer-btn:focus-visible {
+  outline: 3px solid #1769e0;
+  outline-offset: 3px;
+}
+
+/* =========================================
+   FILTER OVERLAY
+   ========================================= */
+
+.filters-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(20, 27, 38, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.filters-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* =========================================
+   RIGHT-SIDE FILTER DRAWER
+   ========================================= */
+
+.filters-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  width: min(410px, 100%);
+  height: 100vh;
+  height: 100dvh;
+  background: #ffffff;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.12);
+  transform: translateX(105%);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.filters-drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.filters-drawer-open {
+  overflow: hidden;
+}
+
+/* Drawer Header */
+
+.filters-drawer-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px 24px;
+  border-bottom: 1px solid #e8ebef;
+  background: #ffffff;
+}
+
+.filters-drawer-header h2 {
+  margin: 0;
+  color: #172b4d;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.filters-clear-btn {
+  margin-left: auto;
+  padding: 7px 0;
+  border: none;
+  background: transparent;
+  color: #1769e0;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filters-clear-btn:hover {
+  color: #ff6900;
+}
+
+.filters-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: #f3f5f7;
+  color: #303846;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filters-close-btn:hover {
+  background: #ffe8d8;
+  color: #ff6900;
+}
+
+/* Scrollable Drawer Content */
+
+.filters-drawer-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 24px 24px;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dbe3 transparent;
+}
+
+.filters-drawer-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filters-drawer-content::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #d5dbe3;
+}
+
+/* Individual Filter Sections */
+
+.filter-section {
+  padding: 22px 0;
+  border-bottom: 1px solid #eceff3;
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-section h3 {
+  margin: 0 0 17px;
+  color: #202b3a;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.category-options {
+  gap: 14px;
+}
+
+/* Checkbox and Radio Labels */
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  color: #69717d;
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.filter-option > span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.filter-option input {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin: 0;
+  accent-color: #1769e0;
+  cursor: pointer;
+}
+
+.filter-option:hover {
+  color: #202b3a;
+}
+
+.rating-stars {
+  flex-shrink: 0;
+  color: #f4b400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Price Slider */
+
+.price-range-slider {
+  display: block;
+  width: 100%;
+  height: 6px;
+  margin: 25px 0 16px;
+  border-radius: 10px;
+  background: #e1e5eb;
+  accent-color: #087bf0;
+  cursor: pointer;
+}
+
+.price-range-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #737c88;
+  font-size: 12px;
+}
+
+.price-range-labels strong {
+  color: #172b4d;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Fixed Drawer Footer */
+
+.filters-drawer-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 24px;
+  border-top: 1px solid #e8ebef;
+  background: #ffffff;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.025);
+}
+
+.filters-reset-footer-btn,
+.filters-apply-btn {
+  min-height: 46px;
+  padding: 11px 17px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filters-reset-footer-btn {
+  flex-shrink: 0;
+  border: 1px solid #dce2e9;
+  background: #ffffff;
+  color: #263548;
+}
+
+.filters-reset-footer-btn:hover {
+  background: #f4f6f8;
+}
+
+.filters-apply-btn {
+  flex: 1;
+  border: 1px solid #ff6900;
+  background: #ff6900;
+  color: #ffffff;
+}
+
+.filters-apply-btn:hover {
+  background: #e95d00;
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 768px) {
+  .top-search-container {
+    flex-wrap: wrap;
+  }
+
+  .search-location {
+    width: 100%;
+  }
+
+  .search-input-wrapper {
+    flex: 1 1 0;
+  }
+
+  .filters-open-btn {
+    min-width: 50px;
+    padding: 0 12px;
+  }
+
+  .filters-open-btn > span:nth-child(2) {
+    display: none;
+  }
+
+  .filters-drawer {
+    width: min(410px, 92vw);
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+  .top-search-container {
+    gap: 8px;
+  }
+
+  .search-input-wrapper {
+    min-height: 46px;
+    padding: 0 10px;
+    gap: 7px;
+  }
+
+  .search-input-wrapper input {
+    font-size: 13px;
+  }
+
+  .filters-open-btn,
+  .top-search-btn {
+    min-width: 44px;
+    min-height: 46px;
+    padding: 0 10px;
+  }
+
+  .filters-drawer {
+    width: 100%;
+  }
+
+  .filters-drawer-header {
+    padding: 17px 18px;
+  }
+
+  .filters-drawer-header h2 {
+    font-size: 21px;
+  }
+
+  .filters-drawer-content {
+    padding: 0 18px 20px;
+  }
+
+  .filter-section {
+    padding: 19px 0;
+  }
+
+  .filters-drawer-footer {
+    padding: 13px 18px;
+  }
+
+  .filters-apply-btn,
+  .filters-reset-footer-btn {
+    min-height: 44px;
+    font-size: 13px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .filters-overlay,
+  .filters-drawer,
+  .filters-open-btn,
+  .filters-close-btn,
+  .filters-apply-btn {
+    transition: none;
+  }
+}
+
+/* Prevent background layout from shifting when filters open */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body.filters-drawer-open {
+  overflow: hidden;
+  padding-right: 0 !important;
+}
+
+/* Keep the page layout stable behind the drawer */
+.search-page {
+  overflow-x: clip;
+}
+
+.filters-overlay {
+  position: fixed;
+  inset: 0;
+}
+
+.filters-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}

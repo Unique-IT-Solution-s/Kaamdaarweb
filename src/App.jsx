@@ -25,6 +25,21 @@ import OTP from './pages/otp/otp';
 import Hourly_Booking from './pages/Search/hourly_booking';
 import ServiceOne from './pages/Search/service_one';
 import ServicesTwo from "./pages/Search/services_two";
+import PackingUnpacking from './pages/Search/PackingUnpackin';
+import UtensilsCleaning from "./pages/Search/UtensilsCleaning";
+import KitchenPrep from "./pages/Search/KitchenPrep";
+import DustingWiping from './pages/Search/DustingWiping';
+import SweepingMopping from './pages/Search/SweepingMopping';
+import PrePartyExpress from './pages/Search/PrePartyExpress';
+import CompleteWardrobe from './pages/Search/CompleteWardrobe';
+import AfterPartyExpress from './pages/Search/AfterPartyExpress';
+import IroningFolding from './pages/Search/IroningFolding';
+import HomeDeepCleaning from './pages/Search/HomeDeepCleaning';
+import KitchenCleaning from './pages/Search/KitchenCleaning';
+import LivingRoomCleaning from './pages/Search/LivingRoomCleaning';
+import LaundryServices from './pages/Search/LaundryServices';
+import WindowCleaning from './pages/Search/WindowCleaning';
+import MoveInMoveOutCleaning from './pages/Search/MoveInMoveOutCleaning';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -80,6 +95,56 @@ function App() {
             path="/services-two"
             element={<ServicesTwo />}
           />
+          <Route path="/packing-unpacking" element={<PackingUnpacking />} />
+          <Route path="/utensils-cleaning" element={<UtensilsCleaning />} />
+          <Route path="/kitchen-prep" element={<KitchenPrep />} />
+          <Route path="/dusting-wiping" element={<DustingWiping />} />
+          <Route
+            path="/sweeping-mopping"
+            element={<SweepingMopping />}
+          />
+          <Route
+            path="/pre-party-express"
+            element={<PrePartyExpress />}
+          />
+          <Route
+            path="/complete-wardrobe"
+            element={<CompleteWardrobe />}
+          />
+          <Route
+            path="/after-party-express"
+            element={<AfterPartyExpress />}
+          />
+          <Route
+            path="/ironing-folding"
+            element={<IroningFolding />}
+          />
+          <Route
+            path="/home-deep-cleaning"
+            element={<HomeDeepCleaning />}
+          />
+          <Route
+            path="/kitchen-cleaning"
+            element={<KitchenCleaning />}
+          />
+          <Route
+            path="/living-room-cleaning"
+            element={<LivingRoomCleaning />}
+          />
+          <Route
+            path="/laundry-services"
+            element={<LaundryServices />}
+          />
+          <Route
+            path="/window-cleaning"
+            element={<WindowCleaning />}
+          />
+          <Route
+            path="/move-in-move-out-cleaning"
+            element={<MoveInMoveOutCleaning />}
+          />
+          
+
 
           <Route path="/service" element={<ServiceDetail />} />
           <Route path="/booking" element={<Booking />} />
