@@ -1,25 +1,28 @@
-
 /* Footer.css */
+
 .footer {
-  background-color: gray;
-  color: #1f2937;
+  background-color: white;
+  color: #101011;
   padding: 40px 0 20px;
   margin-top: auto;
   border-top: 1px solid #e5e7eb;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer__container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
   gap: 40px;
 }
 
-/* --- Column 1: Logo & Info --- */
 .footer__col {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
+/* Logo & Info */
 .footer__logo {
   display: flex;
   align-items: center;
@@ -28,24 +31,26 @@
   flex-wrap: wrap;
 }
 
-.footer__logo h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1a56db;
-  margin: 0;
+.footer__brand-img {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .footer__copyright {
   font-size: 13px;
-  color: #6b7280;
+  color: #202020;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
-/* --- Headings & Links --- */
+/* Headings & Links */
 .footer__col h3 {
-  color: #b8babd;
+  color: #202020;
   font-size: 16px;
-  margin-bottom: 20px;
+  margin: 0 0 20px;
   font-weight: 600;
 }
 
@@ -61,11 +66,91 @@
 
 .footer__col ul li a {
   font-size: 14px;
-  color: #b8babd;
+  color: #202020;
   text-decoration: none;
   transition: color 0.3s;
+  overflow-wrap: anywhere;
 }
 
 .footer__col ul li a:hover {
   color: var(--primary-orange);
+}
+
+/* App & Social Links */
+.footer__app {
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__app a {
+  display: inline-flex;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.footer__play-store {
+  display: block;
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer__instagram {
+  display: block;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+/* Tablet: 2 columns */
+@media (max-width: 992px) {
+  .footer__container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+  }
+
+  .footer__app {
+    align-items: flex-start;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 576px) {
+  .footer {
+    padding: 30px 0 20px;
+  }
+
+  .footer__container {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+  }
+
+  .footer__brand-img {
+    width: 160px;
+  }
+
+  .footer__col h3 {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .footer__col ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer__col ul li a {
+    font-size: 14px;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
+  }
+
+  .footer__app {
+    align-items: flex-start;
+  }
+
+  .footer__play-store {
+    width: 160px;
+  }
 }

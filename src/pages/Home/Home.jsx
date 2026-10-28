@@ -1,20 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react'; // 1. useState import kiya
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import backgroundHeroImage from "../../assets/photofirst.jpg"
 
 const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  // 2. Search input ki value store karne ke liye state
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // 3. Services ko ek variable me nikal liya taaki filter kar sakein
+  const allServices = [
+    { name: 'AC Service & Repair', icon: '❄️' },
+    { name: 'Home Cleaning', icon: '🧹' },
+    { name: 'Plumber', icon: '🔧' },
+    { name: 'Electrician', icon: '⚡' },
+    { name: 'Painter', icon: '🎨' },
+    { name: 'Carpenter', icon: '🪚' },
+    { name: 'Appliance Repair', icon: '📺' },
+    { name: 'Pest Control', icon: '🐜' },
+    { name: 'salon', icon: '💅' },
+    { name: 'RO', icon: '💧' },
+    { name: 'Geyser', icon: '♨️' },
+    { name: 'Gardener', icon: '🌿' },
+  ];
+
+  // 4. Filter Logic: Search text ke hisaab se services filter karega
+  const filteredServices = allServices.filter((service) =>
+    service.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="home-page">
       
       {/* --- Hero Section --- */}
       <section className="hero">
         
-        {/* Background Image */}
         <img
-        src="https://media.istockphoto.com/id/2216081659/photo/young-businessman-using-phone-and-laughing-at-home.jpg?s=612x612&w=0&k=20&c=WXobQef39_gu-ToCKZDN6qPbZUhXPRPOT1r5uICu6Wc="
-        alt='Hero-background image'
+          src="https://media.istockphoto.com/id/2216081659/photo/young-businessman-using-phone-and-laughing-at-home.jpg?s=612x612&w=0&k=20&c=WXobQef39_gu-ToCKZDN6qPbZUhXPRPOT1r5uICu6Wc="
+          alt='Hero-background image'
           className="hero-bg-img"
         />
 
@@ -34,15 +58,23 @@ const Home = () => {
               <div className="search-divider"></div>
               <div className="search-input-group search-input-group--main">
                 <span className="icon">🔍</span>
-                <input type="text" placeholder="What service do you need?" />
+                {/* 5. Input me onChange lagaya taaki state update ho */}
+                <input 
+                  type="text" 
+                  placeholder="What service do you need?" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
               </div>
 
-              <button className="search-btn">Search</button>
+              {/* Search button pe click karne se abhi ke liye kuch nahi hoga, par live search chalega */}
+              <button className="search-btn" onClick={() => {}}>Search</button>
             </div>
           </div>
         </div>
 
         <div className="hero__features-bar">
+          {/* ... (Aapka same purana code) ... */}
           <div className="container hero__features-container">
             <div className="feature-item">
               <span className="feature-icon">🛡️</span>
@@ -80,36 +112,34 @@ const Home = () => {
       <section className="services-section">
         <div className="container">
           <div className="services-header">
-            <h2>Popular Services</h2>
+            {/* Heading dynamic kari hai thodi, agar search ho toh "Search Results" dikhaye */}
+            <h2>{searchQuery ? "Search Results" : "Popular Services"}</h2>
             <p>Choose from 100+ professional services</p>
             <button onClick={() => navigate("/search")} className="view-all-btn">View All →</button>
           </div>
 
           <div className="services-grid">
-            {[
-              { name: 'AC Service & Repair', icon: '❄️' },
-              { name: 'Home Cleaning', icon: '🧹' },
-              { name: 'Plumber', icon: '🔧' },
-              { name: 'Electrician', icon: '⚡' },
-              { name: 'Painter', icon: '🎨' },
-              { name: 'Carpenter', icon: '🪚' },
-              { name: 'Appliance Repair', icon: '📺' },
-              { name: 'Pest Control', icon: '🐜' },
-              { name: 'salon' , icon:  '💅'},
-              { name: 'RO' , icon: '💧'},
-              { name: 'Geyser' , icon: '♨️'},
-              { name: 'Gardener' , icon: '🌿'},
-            ].map((service, index) => (
-              <div key={index} className="service-card">
-                <div className="service-card__icon">{service.icon}</div>
-                <h3 className="service-card__title">{service.name}</h3>
+            {/* 6. Yahan filteredServices map chalega */}
+            {filteredServices.length > 0 ? (
+              filteredServices.map((service, index) => (
+                <div key={index} className="service-card">
+                  <div className="service-card__icon">{service.icon}</div>
+                  <h3 className="service-card__title">{service.name}</h3>
+                </div>
+              ))
+            ) : (
+              // Agar kuch na mile toh yeh message dikhega
+              <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "40px 0", color: "#666" }}>
+                <h3>No services found for "{searchQuery}" 😔</h3>
+                <p>Try searching for something else like "AC", "Plumber", or "Cleaning".</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
 
       {/* --- How Kaamdaar Works Section --- */}
+      {/* ... (Aapka same code) ... */}
       <section className="how-it-works">
         <div className="container">
           <div className="how-it-works__header">
@@ -123,7 +153,6 @@ const Home = () => {
               <h3>1. Search</h3>
               <p>Choose your service and location</p>
             </div>
-            {/* Arrow */}
             <div className="step-arrow">➔</div>
 
             <div className="step-card">
@@ -131,7 +160,6 @@ const Home = () => {
               <h3>2. Book</h3>
               <p>Select time and confirm booking</p>
             </div>
-            {/* Arrow */}
             <div className="step-arrow">➔</div>
 
             <div className="step-card">
@@ -139,7 +167,6 @@ const Home = () => {
               <h3>3. Track</h3>
               <p>Track your provider live on map</p>
             </div>
-            {/* Arrow */}
             <div className="step-arrow">➔</div>
 
             <div className="step-card">
@@ -152,15 +179,13 @@ const Home = () => {
       </section>
 
       {/* --- Verified Professionals & Stats Section --- */}
+      {/* ... (Aapka same code) ... */}
       <section className="verified-section container">
         <div className="verified-banner">
-          
-          {/* Left Side: Image */}
           <div className="verified-image">
             <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Professional Worker" />
           </div>
 
-          {/* Right Side: Content */}
           <div className="verified-content">
             <h2>Verified Professionals<br/>at Your Service</h2>
             <ul className="verified-features">
@@ -170,10 +195,8 @@ const Home = () => {
             </ul>
             <button className="book-now-orange-btn">Book Now</button>
           </div>
-
         </div>
 
-        {/* Stats Counter */}
         <div className="stats-container">
           <div className="stat-box">
             <h3>20,000+</h3>
@@ -195,9 +218,10 @@ const Home = () => {
       </section>
 
       {/* --- Customer Reviews Section --- */}
+      {/* ... (Aapka same code) ... */}
       <section className="reviews-section">
         <div className="container">
-          <div className="services-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="services-header" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <h2>What Our Customers Say</h2>
             </div>
