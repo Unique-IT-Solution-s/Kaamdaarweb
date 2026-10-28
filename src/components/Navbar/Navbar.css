@@ -1,207 +1,548 @@
-/* =========================================
-   DESKTOP NAVBAR STYLING
-   ========================================= */
+/* ================================
+   NAVBAR - GLOBAL
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
 .navbar {
-  background-color: var(--white);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --primary-orange: #ff7a00;
+  --primary-orange-dark: #e66f00;
+  --text-color: #222222;
+
+  width: 100%;
+  max-width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
-  padding: 10px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
 
 .navbar__container {
+  width: 100%;
+  max-width: 1440px;
+  min-width: 0;
+  min-height: 78px;
+  margin: 0 auto;
+  padding: 12px 28px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative; /* NAYA: Menu ko anchor karne ke liye */
+  justify-content: space-between;
+  gap: 22px;
 }
+
+/* ================================
+   LOGO
+================================ */
 
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--primary-blue);
+  flex-shrink: 0;
+  text-decoration: none;
+  min-width: 0;
 }
 
 .navbar__logo-icon {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .navbar__logo-icon img {
-  height: 50px;
+  display: block;
+  width: 165px;
+  max-width: 100%;
+  height: auto !important;
+  max-height: 55px;
   object-fit: contain;
 }
 
+/* ================================
+   LOCATION
+================================ */
+
+.search-input-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 0;
+  max-width: 220px;
+  padding: 10px 12px;
+
+  background: #fff8f1;
+  border: 1px solid #ffe0c2;
+  border-radius: 8px;
+  flex-shrink: 1;
+}
+
+.search-input-location .icon {
+  flex-shrink: 0;
+  font-size: 17px;
+}
+
+.location-select {
+  width: 100%;
+  min-width: 0;
+  max-width: 170px;
+  padding: 2px 18px 2px 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ================================
+   NAVIGATION LINKS
+================================ */
+
 .navbar__links {
   display: flex;
-  list-style: none;
-  gap: 25px;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.8vw, 26px);
+
   margin: 0;
   padding: 0;
+  list-style: none;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
-.navbar__links li a {
-  font-size: 15px;
+.navbar__links li {
+  min-width: 0;
+}
+
+.navbar__links li > a:not(.navbar__login) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 0;
+
+  color: var(--text-color);
+  font-size: 14px;
   font-weight: 500;
-  color: var(--text-dark);
-  transition: 0.3s;
-  padding-bottom: 5px;
   text-decoration: none;
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
 }
 
-/* Link ka color jab wo active ho */
-.active-link {
-  color: var(--primary-orange) !important;
-  font-weight: 600 !important;
+.navbar__links li > a:not(.navbar__login):hover,
+.navbar__links li > a.active-link {
+  color: var(--primary-orange);
 }
+
+.navbar__links li > a.active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--primary-orange);
+}
+
+/* ================================
+   LOGIN / LOGOUT
+================================ */
 
 .navbar__auth {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .navbar__login {
-  font-weight: 500;
-  color: var(--text-dark);
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 10px 20px;
+
+  background: var(--primary-orange);
+  color: #ffffff;
+  border: 1px solid var(--primary-orange);
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
 }
 
-.navbar__signup {
-  background-color: var(--primary-orange);
-  color: var(--white);
-  padding: 8px 20px;
-  border-radius: 6px;
-  font-weight: 500;
-  transition: 0.3s;
-  cursor: pointer;
-  text-decoration: none;
+.navbar__login:hover {
+  background: var(--primary-orange-dark);
+  color: #ffffff;
 }
-.navbar__signup:hover { background-color: #e65c00; }
 
 .navbar__logout-btn {
-  background: transparent;
-  color: #ef4444;
-  border: 1px solid #ef4444;
-  padding: 8px 20px;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 42px;
+  min-height: 42px;
+  padding: 9px;
+
+  border: 1px solid #ffe0c2;
+  border-radius: 8px;
+  background: #fff8f1;
+  color: var(--primary-orange);
+
+  cursor: pointer;
+  font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
-}
-.navbar__logout-btn:hover { background: #ef4444; color: white; }
-
-/* Hamburger (Desktop par chhupa rahega) */
-.hamburger {
-  display: none; 
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-  padding: 5px;
-  z-index: 1001; /* NAYA: Menu ke upar rahe */
 }
 
-.bar {
-  width: 25px;
-  height: 3px;
-  background-color: #1f2937;
-  border-radius: 3px;
-  transition: 0.3s;
+.navbar__logout-btn:hover {
+  background: #ff7a00;
+  color: white;
 }
 
-/* Mobile ke liye login/signup links default me chhupe rahenge */
+.navbar__user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+  border: 1px solid #ffe0c2;
+  border-radius: 50%;
+  background: #fff8f1;
+  color: var(--primary-orange);
+  text-decoration: none;
+}
+
+.navbar__user-icon:hover {
+  background: #fff0df;
+}
+
+/* Hide mobile-only items on desktop */
+
 .mobile-auth-links {
   display: none;
 }
 
+.hamburger {
+  display: none;
+}
 
-/* =========================================
-   MOBILE RESPONSIVE NAVBAR
-   ========================================= */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex; 
+/* ================================
+   LAPTOP / SMALL DESKTOP
+================================ */
+
+@media (max-width: 1200px) {
+  .navbar__container {
+    gap: 16px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 
-  /* Desktop ke auth buttons mobile par chhupa dein */
-  .desktop-auth {
-    display: none; 
+  .navbar__logo-icon img {
+    width: 145px;
+  }
+
+  .search-input-location {
+    max-width: 190px;
+    padding: 9px;
   }
 
   .navbar__links {
-    display: none; 
-    position: absolute;
-    top: 100%; /* NAYA: Navbar ke theek niche (dynamic) */
-    left: 0;
+    gap: 15px;
+  }
+
+  .navbar__links li > a:not(.navbar__login) {
+    font-size: 13px;
+  }
+
+  .navbar__login {
+    padding: 10px 15px;
+  }
+}
+
+/* ================================
+   TABLET & MOBILE NAVIGATION
+================================ */
+
+@media (max-width: 960px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+  }
+
+  .navbar__container {
+    min-height: 0;
+    padding: 12px 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .navbar__logo {
+    order: 1;
+    margin-right: auto;
+  }
+
+  .navbar__logo-icon img {
+    width: 145px;
+    max-height: 48px;
+  }
+
+  .search-input-location {
+    order: 4;
+    flex: 0 0 100%;
     width: 100%;
-    background: #ffffff;
+    max-width: 100%;
+    justify-content: flex-start;
+    padding: 9px 12px;
+  }
+
+  .location-select {
+    flex: 1;
+    max-width: 100%;
+  }
+
+  /* User icon */
+
+  .navbar__user-icon {
+    order: 2;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Hide desktop login/logout */
+
+  .desktop-auth {
+    display: none;
+  }
+
+  /* Hamburger */
+
+  .hamburger {
+    order: 3;
+    display: flex;
     flex-direction: column;
-    text-align: left; /* NAYA: Left aligned text better hai */
-    padding: 10px 0;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    z-index: 999;
-    gap: 0; /* NAYA: Gap hatao, padding use karenge */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+
+    flex-shrink: 0;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    background: #ffffff;
+    cursor: pointer;
   }
 
-  /* Har link ko padding dein (click area bada) */
-  .navbar__links li {
-    width: 100%;
-    border-bottom: 1px solid #f3f4f6;
-  }
-
-  .navbar__links li a {
+  .hamburger .bar {
     display: block;
-    padding: 15px 25px;
-    font-size: 15px;
+    width: 21px;
+    height: 2px;
+    border-radius: 3px;
+    background: var(--primary-orange);
+    transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  .navbar__links li:last-child {
-    border-bottom: none;
+  .hamburger .bar:nth-child(1).open {
+    transform: translateY(7px) rotate(45deg);
   }
 
-  /* Jab menu open ho */
+  .hamburger .bar:nth-child(2).open {
+    opacity: 0;
+  }
+
+  .hamburger .bar:nth-child(3).open {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Dropdown menu */
+
+  .navbar__links {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    max-height: calc(100dvh - 120px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+
+    margin: 0;
+    padding: 10px 20px 18px;
+
+    background: #ffffff;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
   .navbar__links.mobile-open {
     display: flex;
   }
 
-  /* Mobile menu ke andar login/signup */
+  .navbar__links li {
+    width: 100%;
+  }
+
+  .navbar__links li > a:not(.navbar__login) {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    padding: 12px 4px;
+    white-space: normal;
+  }
+
+  .navbar__links li > a.active-link::after {
+    bottom: 4px;
+    width: 28px;
+  }
+
+  /* Mobile login/logout */
+
   .mobile-auth-links {
     display: block;
-    border-top: none; /* NAYA: Upar line hatai */
-    padding: 15px 25px !important;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid #eeeeee;
   }
 
-  /* Mobile menu ke andar login/signup buttons */
+  .mobile-auth-links .navbar__logout-btn,
   .mobile-auth-links .navbar__login {
-    padding: 10px 0;
-    display: block;
-  }
-
-  .mobile-auth-links .navbar__signup {
-    display: inline-block;
-    padding: 10px 20px;
-    text-align: center;
-    margin-top: 10px;
     width: 100%;
-  }
-  
-  .mobile-auth-links .navbar__logout-btn {
-    width: 100%;
-    padding: 12px;
+    min-height: 44px;
   }
 
-  /* --- HAMBURGER ANIMATION (X mein badalna) --- */
-  .bar.open:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  .mobile-auth-links > div {
+    margin-top: 0 !important;
+    gap: 10px !important;
+  }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .navbar__container {
+    padding: 10px 12px;
+    gap: 10px;
   }
 
-  .bar.open:nth-child(2) {
-    opacity: 0;
+  .navbar__logo-icon img {
+    width: clamp(105px, 35vw, 135px);
+    max-height: 42px;
   }
 
-  .bar.open:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+  .navbar__user-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar__user-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .hamburger {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hamburger .bar {
+    width: 19px;
+  }
+
+  .search-input-location {
+    padding: 8px 10px;
+    gap: 7px;
+  }
+
+  .location-select {
+    font-size: 12px;
+  }
+
+  .navbar__links {
+    padding: 8px 14px 16px;
+  }
+
+  .navbar__links li > a:not(.navbar__login) {
+    font-size: 14px;
+  }
+}
+
+/* ================================
+   EXTRA SMALL SCREENS
+================================ */
+
+@media (max-width: 320px) {
+  .navbar__container {
+    padding-right: 8px;
+    padding-left: 8px;
+    gap: 6px;
+  }
+
+  .navbar__logo-icon img {
+    width: 100px;
+    max-height: 36px;
+  }
+
+  .navbar__user-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hamburger {
+    width: 34px;
+    height: 34px;
+    padding: 6px;
+  }
+
+  .hamburger .bar {
+    width: 18px;
+  }
+
+  .search-input-location {
+    padding: 7px 8px;
+  }
+}
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar *,
+  .navbar *::before,
+  .navbar *::after {
+    transition: none !important;
   }
 }

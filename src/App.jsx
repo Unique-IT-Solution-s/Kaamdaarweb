@@ -40,6 +40,7 @@ import LivingRoomCleaning from './pages/Search/LivingRoomCleaning';
 import LaundryServices from './pages/Search/LaundryServices';
 import WindowCleaning from './pages/Search/WindowCleaning';
 import MoveInMoveOutCleaning from './pages/Search/MoveInMoveOutCleaning';
+import Register from "./pages/Register/Register";
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -154,6 +155,7 @@ function App() {
           <Route path="/help" element={<HelpSupport />} />
           <Route path="/login" element={<Login />} />
           <Route path="/otp" element={<OTP />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Layout>
     </BrowserRouter>

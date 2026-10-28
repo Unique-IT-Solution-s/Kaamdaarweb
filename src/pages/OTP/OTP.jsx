@@ -6,11 +6,11 @@ import Logo from '../../assets/Kaamdaar_Primary_Logo_400x137.png';
 const OTP = () => {
   const navigate = useNavigate();
   
-  // 4 digit ke liye state
-  const [otp, setOtp] = useState(['', '', '', '']);
+  // 6 digit ke liye state
+  const [otp, setOtp] = useState(['', '', '', '','','']);
   
   // Yahan apna Hardcoded OTP set karein (Aap isko 1234 ya 5678 kuch bhi rakh sakte hain)
-  const HARDCODED_OTP = "1234"; 
+  const HARDCODED_OTP = "123456"; 
 
   const userPhone = localStorage.getItem('userPhone') || '+91 XXXXX XXXXX';
 
@@ -48,7 +48,7 @@ const OTP = () => {
 
         <div className="otp-body">
           <h2>Verify OTP</h2>
-          <p className="otp-subtext">we have sent a 4-digit OTP to <br/><strong>{userPhone}</strong></p>
+          <p className="otp-subtext">we have sent a 6-digit OTP to <br/><strong>{userPhone}</strong></p>
 
           {/* OTP Boxes */}
           <div className="otp-inputs">

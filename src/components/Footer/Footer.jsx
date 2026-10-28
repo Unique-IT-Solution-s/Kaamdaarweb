@@ -41,14 +41,40 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Column 4: For Providers */}
-        <div className="footer__col">
-          <h3>For Providers</h3>
-          <ul>
-            <li><Link to="/register">Register as Provider</Link></li>
-            <li><Link to="/login">Provider Login</Link></li>
-            <li><Link to="/become">Become a Partner</Link></li>
-          </ul>
+        {/* Column 4: App & Social Links */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
+          
+          {/* Play Store Logo */}
+          {/* Dhyan dein: Yahan https:// wala asli link daalein */}
+          <a 
+            href="https://play.google.com/store/apps" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ display: 'inline-block' }}
+          >
+            <img
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              alt="Get it on Google Play"
+              style={{ height: "55px", width: "auto", margin: "-5px 0" }} 
+              // margin -5px isliye taaki badge ka extra white space hat jaye
+            />
+          </a>
+
+          {/* Instagram Logo */}
+          {/* Dhyan dein: Yahan apne Instagram ka asli link daalein */}
+          <a 
+            href="https://www.instagram.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ display: 'inline-block', marginTop: '-5px' }}
+          >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+              alt="Instagram"
+              style={{ height: "35px", width: "auto" }}
+            />
+          </a>
+
         </div>
 
       </div>
