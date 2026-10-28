@@ -207,10 +207,6 @@ const Hourly_Booking = () => {
               </span>
             </div>
 
-            <div className="hourly-floating-tag">
-              <span>✓</span>
-              Flexible home help
-            </div>
           </div>
         </div>
       </section>

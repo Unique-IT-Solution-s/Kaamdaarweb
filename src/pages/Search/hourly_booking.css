@@ -949,7 +949,7 @@
   }
 
   .hourly-floating-tag {
-    right: 0;
+    left: 20px;
     font-size: 10px;
   }
 }
