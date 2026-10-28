@@ -1,0 +1,955 @@
+
+/* ========================================
+   HOURLY BOOKING PAGE
+======================================== */
+
+.hourly-page {
+  --hourly-orange: #ff6900;
+  --hourly-orange-dark: #e95e00;
+  --hourly-blue: #315c9b;
+  --hourly-text: #17243a;
+  --hourly-muted: #68768b;
+  --hourly-border: #e5eaf0;
+  --hourly-surface: #ffffff;
+  --hourly-soft: #f5f9f8;
+
+  background: #fffdfb;
+  color: var(--hourly-text);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.hourly-page *,
+.hourly-page *::before,
+.hourly-page *::after {
+  box-sizing: border-box;
+}
+
+.hourly-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* ========================================
+   BREADCRUMB
+======================================== */
+
+.hourly-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 26px;
+  padding-bottom: 24px;
+  font-size: 14px;
+  color: var(--hourly-muted);
+}
+
+.hourly-breadcrumb button {
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: var(--hourly-blue);
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.hourly-breadcrumb button:hover {
+  color: var(--hourly-orange);
+}
+
+.breadcrumb-current {
+  color: var(--hourly-text);
+  font-weight: 600;
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.hourly-hero {
+  position: relative;
+  padding: 44px 0 78px;
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(255, 105, 0, 0.06),
+      transparent 27%
+    ),
+    linear-gradient(135deg, #fffaf5 0%, #f2faf8 100%);
+}
+
+.hourly-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: 58px;
+}
+
+.hourly-hero-content {
+  min-width: 0;
+}
+
+.hourly-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 15px;
+  border: 1px solid #f3e4d7;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--hourly-blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hourly-orange);
+  box-shadow: 0 0 0 4px rgba(255, 105, 0, 0.12);
+}
+
+.hourly-hero-content h1 {
+  margin: 24px 0 18px;
+  font-size: clamp(44px, 5vw, 68px);
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--hourly-text);
+}
+
+.hourly-hero-content h1 span {
+  color: var(--hourly-orange);
+}
+
+.hourly-hero-content h2 {
+  margin: 0 0 16px;
+  font-size: clamp(20px, 2.2vw, 25px);
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.hourly-hero-description {
+  max-width: 540px;
+  margin: 0 0 28px;
+  color: var(--hourly-muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.hourly-duration-label {
+  margin-bottom: 14px;
+  color: var(--hourly-text);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.hourly-duration-options {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.hourly-duration-card {
+  position: relative;
+  min-height: 74px;
+  padding: 17px 8px;
+  border: 1px solid var(--hourly-border);
+  border-radius: 15px;
+  background: #fff;
+  color: var(--hourly-text);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hourly-duration-card:hover {
+  border-color: var(--hourly-orange);
+  transform: translateY(-2px);
+}
+
+.hourly-duration-card.selected {
+  border: 2px solid var(--hourly-orange);
+  background: #fff7f0;
+  box-shadow: 0 5px 18px rgba(255, 105, 0, 0.1);
+}
+
+.duration-value {
+  display: block;
+  font-size: 15px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.duration-popular {
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  padding: 4px 6px;
+  border-radius: 5px;
+  background: var(--hourly-orange);
+  color: white;
+  font-size: 8px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.duration-check {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  color: var(--hourly-orange);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hourly-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.hourly-primary-btn,
+.hourly-secondary-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hourly-primary-btn {
+  border: 1px solid var(--hourly-orange);
+  background: var(--hourly-orange);
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(255, 105, 0, 0.17);
+}
+
+.hourly-primary-btn:hover {
+  background: var(--hourly-orange-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(255, 105, 0, 0.23);
+}
+
+.hourly-secondary-btn {
+  border: 1px solid var(--hourly-border);
+  background: #fff;
+  color: var(--hourly-blue);
+}
+
+.hourly-secondary-btn:hover {
+  border-color: var(--hourly-blue);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   HERO IMAGE
+======================================== */
+
+.hourly-hero-visual {
+  position: relative;
+  min-width: 0;
+  padding: 20px 0;
+}
+
+.hourly-visual-decoration {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.decoration-one {
+  top: 0;
+  right: 5%;
+  width: 95px;
+  height: 95px;
+  background: rgba(255, 105, 0, 0.09);
+}
+
+.decoration-two {
+  bottom: 10px;
+  left: 0;
+  width: 75px;
+  height: 75px;
+  background: rgba(49, 92, 155, 0.09);
+}
+
+.hourly-image-placeholder {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  min-height: 410px;
+  padding: 32px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #f2faf8, #ffffff);
+  box-shadow: 0 18px 55px rgba(33, 63, 82, 0.07);
+}
+
+.hourly-hero-image {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: 310px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.hourly-visual-caption {
+  display: block;
+  color: var(--hourly-blue);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 700;
+  text-align: center;
+}
+
+.hourly-floating-tag {
+  position: absolute;
+  z-index: 2;
+  right: -10px;
+  bottom: 35px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 1px solid #e0e8ef;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(20, 40, 60, 0.08);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.hourly-floating-tag > span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #e4f8ee;
+  color: #07965c;
+  font-size: 15px;
+}
+
+/* ========================================
+   SECTION HEADINGS
+======================================== */
+
+.hourly-section-heading {
+  max-width: 720px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.hourly-section-kicker {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--hourly-orange);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.hourly-section-heading h2,
+.hourly-exclusions-heading h2,
+.hourly-app-content h2 {
+  margin: 0;
+  color: var(--hourly-text);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.7px;
+}
+
+.hourly-section-heading p {
+  margin: 14px 0 0;
+  color: var(--hourly-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   TASK DURATION SECTION
+   NO ICONS — NAME + TIME ONLY
+======================================== */
+
+.hourly-task-section {
+  padding: 84px 0;
+  background: #fff;
+}
+
+.hourly-task-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hourly-task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+  padding: 20px 8px;
+  border-bottom: 1px solid var(--hourly-border);
+  background: transparent;
+}
+
+.hourly-task-name {
+  flex: 1;
+  min-width: 0;
+  color: var(--hourly-text);
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 650;
+}
+
+.hourly-task-time {
+  flex-shrink: 0;
+  color: var(--hourly-blue);
+  font-size: 14px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* Hide task images/icons if any remain in markup */
+.hourly-task-icon,
+.hourly-task-item img {
+  display: none !important;
+}
+
+.hourly-task-note {
+  max-width: 850px;
+  margin: 25px auto 0;
+  color: var(--hourly-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ========================================
+   EXCLUSIONS SECTION
+======================================== */
+
+.hourly-exclusions-section {
+  padding: 70px 0;
+  background: #f7fafc;
+}
+
+.hourly-exclusions-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.hourly-exclusions-heading h2 {
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.exclusion-cross {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff0e8;
+  color: var(--hourly-orange);
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.hourly-exclusions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 30px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.hourly-exclusion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid #e9edf2;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.hourly-exclusion-item > span {
+  flex-shrink: 0;
+  color: var(--hourly-orange);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.hourly-exclusion-item p {
+  margin: 0;
+  color: var(--hourly-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ========================================
+   APP PROMOTION SECTION
+======================================== */
+
+.hourly-app-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.hourly-app-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 60px;
+  padding: 50px;
+  border-radius: 28px;
+  background: linear-gradient(120deg, #eaf8f1 0%, #f3faf8 100%);
+}
+
+.hourly-app-visual {
+  min-width: 0;
+}
+
+.hourly-app-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 235px;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.78);
+  text-align: center;
+}
+
+.hourly-app-image {
+  display: block;
+  width: 140px;
+  height: 125px;
+  object-fit: contain;
+  margin: 0 auto 12px;
+}
+
+.hourly-app-placeholder strong {
+  display: block;
+  color: var(--hourly-text);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.hourly-app-placeholder small {
+  display: block;
+  margin-top: 8px;
+  color: var(--hourly-muted);
+  font-size: 14px;
+}
+
+.hourly-app-content h2 {
+  max-width: 480px;
+}
+
+.hourly-app-content > p {
+  max-width: 490px;
+  margin: 18px 0 25px;
+  color: var(--hourly-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* ========================================
+   BENEFITS SECTION
+======================================== */
+
+.hourly-benefits-section {
+  padding: 80px 0 90px;
+  background: #fffdfb;
+}
+
+.benefits-heading {
+  margin-bottom: 40px;
+}
+
+.hourly-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hourly-benefit-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  border: 1px solid var(--hourly-border);
+  border-radius: 18px;
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hourly-benefit-card:hover {
+  transform: translateY(-3px);
+  border-color: #f2c7a8;
+  box-shadow: 0 12px 30px rgba(35, 51, 72, 0.06);
+}
+
+.hourly-benefit-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 76px;
+  height: 76px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #f4faf8;
+}
+
+.hourly-benefit-icon img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.hourly-benefit-card h3 {
+  margin: 0 0 8px;
+  color: var(--hourly-text);
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 750;
+}
+
+.hourly-benefit-card p {
+  margin: 0;
+  color: var(--hourly-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 1024px) {
+  .hourly-hero-grid {
+    gap: 32px;
+  }
+
+  .hourly-hero-content h1 {
+    font-size: 54px;
+  }
+
+  .hourly-duration-options {
+    gap: 7px;
+  }
+
+  .duration-value {
+    font-size: 13px;
+  }
+
+  .hourly-app-banner {
+    gap: 35px;
+    padding: 35px;
+  }
+
+  .hourly-floating-tag {
+    right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hourly-container {
+    width: min(100% - 32px, 560px);
+  }
+
+  .hourly-breadcrumb {
+    gap: 8px;
+    padding-top: 20px;
+    padding-bottom: 18px;
+    font-size: 12px;
+  }
+
+  .hourly-hero {
+    padding: 30px 0 55px;
+  }
+
+  .hourly-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .hourly-hero-content h1 {
+    margin-top: 20px;
+    font-size: clamp(43px, 11vw, 58px);
+    letter-spacing: -1.5px;
+  }
+
+  .hourly-hero-content h2 {
+    font-size: 21px;
+  }
+
+  .hourly-hero-description {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .hourly-duration-options {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .hourly-duration-card {
+    min-height: 65px;
+    padding: 15px 4px 10px;
+    border-radius: 11px;
+  }
+
+  .duration-value {
+    font-size: 12px;
+  }
+
+  .duration-popular {
+    top: -9px;
+    font-size: 7px;
+  }
+
+  .hourly-hero-actions {
+    align-items: stretch;
+  }
+
+  .hourly-primary-btn,
+  .hourly-secondary-btn {
+    min-height: 48px;
+    padding: 12px 15px;
+    font-size: 13px;
+  }
+
+  .hourly-hero-visual {
+    padding: 10px 0 20px;
+  }
+
+  .hourly-image-placeholder {
+    min-height: 290px;
+    padding: 24px 18px;
+    border-radius: 23px;
+  }
+
+  .hourly-hero-image {
+    height: 220px;
+  }
+
+  .hourly-visual-caption {
+    font-size: 13px;
+  }
+
+  .hourly-floating-tag {
+    right: -2px;
+    bottom: 0;
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .hourly-floating-tag > span {
+    width: 23px;
+    height: 23px;
+  }
+
+  .hourly-task-section,
+  .hourly-benefits-section {
+    padding: 58px 0;
+  }
+
+  .hourly-section-heading {
+    margin-bottom: 27px;
+  }
+
+  .hourly-section-heading h2,
+  .hourly-exclusions-heading h2,
+  .hourly-app-content h2 {
+    font-size: 27px;
+  }
+
+  .hourly-section-heading p {
+    font-size: 13px;
+  }
+
+  .hourly-task-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hourly-task-item {
+    padding: 17px 4px;
+  }
+
+  .hourly-task-name {
+    font-size: 14px;
+  }
+
+  .hourly-task-time {
+    font-size: 13px;
+  }
+
+  .hourly-task-note {
+    font-size: 12px;
+    text-align: left;
+  }
+
+  .hourly-exclusions-section {
+    padding: 55px 0;
+  }
+
+  .hourly-exclusions-heading {
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .hourly-exclusions-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .hourly-exclusion-item {
+    padding: 14px;
+  }
+
+  .hourly-exclusion-item p {
+    font-size: 13px;
+  }
+
+  .hourly-app-section {
+    padding: 55px 0;
+  }
+
+  .hourly-app-banner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .hourly-app-placeholder {
+    min-height: 200px;
+    border-radius: 22px;
+  }
+
+  .hourly-app-image {
+    width: 115px;
+    height: 105px;
+  }
+
+  .hourly-app-placeholder strong {
+    font-size: 23px;
+  }
+
+  .hourly-app-content h2 {
+    font-size: 27px;
+  }
+
+  .hourly-app-content > p {
+    font-size: 14px;
+  }
+
+  .hourly-benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .hourly-benefit-card {
+    gap: 15px;
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .hourly-benefit-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+  }
+
+  .hourly-benefit-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hourly-benefit-card h3 {
+    font-size: 15px;
+  }
+
+  .hourly-benefit-card p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hourly-container {
+    width: calc(100% - 24px);
+  }
+
+  .hourly-duration-options {
+    gap: 4px;
+  }
+
+  .hourly-duration-card {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .duration-value {
+    font-size: 11px;
+  }
+
+  .hourly-hero-actions {
+    flex-direction: column;
+  }
+
+  .hourly-primary-btn,
+  .hourly-secondary-btn {
+    width: 100%;
+  }
+
+  .hourly-floating-tag {
+    right: 0;
+    font-size: 10px;
+  }
+}
