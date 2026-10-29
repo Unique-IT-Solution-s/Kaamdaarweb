@@ -19,8 +19,8 @@ import LiveTracking from './pages/LiveTracking/LiveTracking';
 import MyBookings from './pages/MyBookings/MyBookings';
 import Profile from './pages/Profile/Profile';
 import HelpSupport from './pages/HelpSupport/HelpSupport';
-import Login from './pages/login/login';
-import OTP from './pages/otp/otp';
+import Login from './pages/Login/Login';
+import OTP from "./pages/OTP/OTP"
 import Hourly_Booking from './pages/Search/hourly_booking';
 import ServiceOne from './pages/Search/service_one';
 import ServicesTwo from "./pages/Search/services_two";
