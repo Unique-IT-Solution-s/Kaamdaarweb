@@ -1,5 +1,5 @@
 
-export const API_BASE_URL = "http://192.168.1.29:4000/api/v1";
+export const API_BASE_URL = "http://192.168.1.15:4000/api/v1";
 
 
 export const API_ROUTES = {

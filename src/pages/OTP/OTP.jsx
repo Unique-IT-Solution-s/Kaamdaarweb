@@ -202,7 +202,7 @@ const OTP = () => {
           JSON.stringify(draft)
         );
 
-        navigate("/profile", {
+        navigate("/register", {
           state: {
             draft,
             verificationMethod: "mobile",

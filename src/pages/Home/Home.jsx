@@ -2,29 +2,75 @@ import React, { useState } from 'react';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import backgroundHeroImage from "../../assets/photofirst.jpg";
+import services_one from "../../assets/services_one.png";
+import services_two from "../../assets/services_two.png";
+import services_three from "../../assets/services_three.png";
+import services_four from "../../assets/services_four.png";
+import services_five from "../../assets/services_five.png";
+import services_six from "../../assets/services_six.png";
+import services_seven from "../../assets/services_seven.png";
+import services_eight from "../../assets/services_eight.png";
+import services_nine from "../../assets/services_nine.png";
+import services_ten from "../../assets/services_ten.png";
+import services_eleven from "../../assets/services_eleven.png";
+import services_twelve from "../../assets/services_twelve.png";
 
 const Home = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const allServices = [
-    { name: 'AC Service & Repair', icon: '❄️' },
-    { name: 'Home Cleaning', icon: '🧹' },
-    { name: 'Plumber', icon: '🔧' },
-    { name: 'Electrician', icon: '⚡' },
-    { name: 'Painter', icon: '🎨' },
-    { name: 'Carpenter', icon: '🪚' },
-    { name: 'Appliance Repair', icon: '📺' },
-    { name: 'Pest Control', icon: '🐜' },
-    { name: 'salon', icon: '💅' },
-    { name: 'RO', icon: '💧' },
-    { name: 'Geyser', icon: '♨️' },
-    { name: 'Gardener', icon: '🌿' },
+  const services = [
+    { id: 1, title: "Hourly Bookings", image: services_one, price: 299, rating: 4.5, availability: ["Today", "Tomorrow"], type: "Hourly Service" },
+    { id: 2, title: "Bathroom Cleaning", image: services_two, price: 499, rating: 4.6, availability: ["Today", "Tomorrow"], type: "Deep Cleaning" },
+    { id: 3, title: "Fridge Cleaning", image: services_three, price: 399, rating: 4.3, availability: ["Tomorrow", "This Week"], type: "One-time Service" },
+    { id: 4, title: "Packing or Unpacking", image: services_four, price: 599, rating: 4.2, availability: ["Today", "This Week"], type: "One-time Service" },
+    { id: 5, title: "Utensils", image: services_five, price: 249, rating: 4.1, availability: ["Today", "Tomorrow"], type: "Hourly Service" },
+    { id: 6, title: "Kitchen Prep", image: services_six, price: 349, rating: 4.4, availability: ["Today", "Tomorrow"], type: "Hourly Service" },
+    { id: 7, title: "Dusting & Wiping", image: services_seven, price: 299, rating: 4.2, availability: ["Today", "This Week"], type: "One-time Service" },
+    { id: 8, title: "Sweeping & Mopping", image: services_eight, price: 299, rating: 4.4, availability: ["Today", "Tomorrow"], type: "Hourly Service" },
+    { id: 9, title: "Pre-Party Express", image: services_nine, price: 699, rating: 4.5, availability: ["Tomorrow", "This Week"], type: "One-time Service" },
+    { id: 10, title: "Complete Wardrobe", image: services_ten, price: 499, rating: 4.1, availability: ["Today", "This Week"], type: "One-time Service" },
+    { id: 11, title: "After-Party Express", image: services_eleven, price: 799, rating: 4.3, availability: ["Tomorrow", "This Week"], type: "Deep Cleaning" },
+    { id: 12, title: "Ironing & Folding", image: services_twelve, price: 249, rating: 4.6, availability: ["Today", "Tomorrow"], type: "Laundry & Clothes Care" },
   ];
 
-  const filteredServices = allServices.filter((service) =>
-    service.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredServices = services.filter((service) =>
+    service.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  const handleServiceClick = (service) => {
+    const routes = {
+      "Hourly Bookings": "/hourly-booking",
+      "Bathroom Cleaning": "/service-one",
+      "Fridge Cleaning": "/services-two",
+      "Packing or Unpacking": "/packing-unpacking",
+      Utensils: "/utensils-cleaning",
+      "Kitchen Prep": "/kitchen-prep",
+      "Dusting & Wiping": "/dusting-wiping",
+      "Sweeping & Mopping": "/sweeping-mopping",
+      "Pre-Party Express": "/pre-party-express",
+      "Complete Wardrobe": "/complete-wardrobe",
+      "After-Party Express": "/after-party-express",
+      "Ironing & Folding": "/ironing-folding",
+    }
+
+    const route = routes[service.title];
+
+    if (route) {
+      navigate(route);
+      return;
+    }
+
+    navigate(`/service?category=${encodeURIComponent(service.title)}`, {
+      state: {
+        service: service.title,
+        serviceId: service.id,
+      },
+    });
+
+
+
+  }
 
   return (
     <div className="home-page">
@@ -91,21 +137,35 @@ const Home = () => {
             <p>Choose from 100+ professional services</p>
             <button onClick={() => navigate("/search")} className="view-all-btn">View All →</button>
           </div>
+
           <div className="services-grid">
-            {filteredServices.length > 0 ? (
-              filteredServices.map((service, index) => (
-                <div key={index} className="service-card">
-                  <div className="service-card__icon">{service.icon}</div>
-                  <h3 className="service-card__title">{service.name}</h3>
-                </div>
-              ))
-            ) : (
-              <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "40px 0", color: "#666" }}>
-                <h3>No services found for "{searchQuery}" 😔</h3>
-                <p>Try searching for something else like "AC", "Plumber", or "Cleaning".</p>
-              </div>
-            )}
-          </div>
+              {filteredServices.map((service) => (
+                <button
+                  type="button"
+                  key={service.id}
+                  className="service-card"
+                  onClick={() => handleServiceClick(service)}
+                  aria-label={`Explore ${service.title}`}
+                >
+                  <div className="service-image-wrapper">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="service-image"
+                      loading={service.id <= 6 ? "eager" : "lazy"}
+                    />
+                  </div>
+
+                  <div className="service-card-footer">
+                    <h2>{service.title}</h2>
+                    <span className="service-arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          
         </div>
       </section>
 
