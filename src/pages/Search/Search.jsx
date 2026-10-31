@@ -1,5 +1,3 @@
-
-
 import React, { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Search.css";
@@ -23,8 +21,8 @@ import services_sixteen from "../../assets/services_sixteen.png";
 import services_seventeen from "../../assets/services_seventeen.png";
 import services_eighteen from "../../assets/services_eighteen.png";
 
-// Demo filter values: replace with actual API data when available.
-const services = [
+// Demo filter values: replace with actual API data when available.//
+ const services = [
   { id: 1, title: "Hourly Bookings", image: services_one, price: 299, rating: 4.5, availability: ["Today", "Tomorrow"], type: "Hourly Service" },
   { id: 2, title: "Bathroom Cleaning", image: services_two, price: 499, rating: 4.6, availability: ["Today", "Tomorrow"], type: "Deep Cleaning" },
   { id: 3, title: "Fridge Cleaning", image: services_three, price: 399, rating: 4.3, availability: ["Tomorrow", "This Week"], type: "One-time Service" },
