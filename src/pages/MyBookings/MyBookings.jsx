@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyBookings.css';
 
-const MyBookings = () => {
-  const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('Upcoming');
-
-  // Dummy Data for Bookings
-  const bookings = [
+const dummyBookings = [
     {
       id: 'KD-8472',
       service: 'AC Service & Repair',
@@ -27,6 +22,24 @@ const MyBookings = () => {
       type: 'Completed'
     },
     {
+      id: 'KD-8395',
+      service: 'Carpenter',
+      provider: 'Rajesh Woodworks',
+      date: '02 Oct 2026, 09:00 AM',
+      price: '450',
+      status: 'Completed',
+      type: 'Completed' 
+    },
+    {
+      id: 'KD-8410',
+      service: 'Plumber',
+      provider: 'Suresh Sharma',
+      date: '05 Oct 2026, 10:00 AM',
+      price: '199',
+      status: 'Completed',
+      type: 'Completed'
+    },
+    {
       id: 'KD-8301',
       service: 'Home Cleaning',
       provider: 'Neha Cleaners',
@@ -34,17 +47,29 @@ const MyBookings = () => {
       price: '499',
       status: 'Cancelled',
       type: 'Cancelled'
+    },
+    {
+      id: 'KD-8295',
+      service: 'Electrician',
+      provider: 'Amit Verma',
+      date: '25 Sep 2026, 11:30 AM',
+      price: '349', 
+      status: 'Cancelled',
+      type: 'Cancelled'
     }
   ];
 
-  // Filter bookings based on active tab
-  const filteredBookings = bookings.filter(b => b.type === activeTab);
+
+  const MyBookings = () => {
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('Upcoming');
+  const filteredBookings = dummyBookings.filter(b => b.type === activeTab);
 
   return (
     <div className="my-bookings-page container">
       <h1 className="page-title">My Bookings</h1>
 
-      {/* Tabs */}
+
       <div className="booking-tabs">
         {['Upcoming', 'Completed', 'Cancelled'].map(tab => (
           <button 
@@ -57,7 +82,7 @@ const MyBookings = () => {
         ))}
       </div>
 
-      {/* Bookings List */}
+
       <div className="bookings-list">
         {filteredBookings.length === 0 ? (
           <div className="empty-state">
@@ -67,7 +92,7 @@ const MyBookings = () => {
           filteredBookings.map(booking => (
             <div className="booking-card" key={booking.id}>
               
-              {/* Card Header */}
+
               <div className="card-header">
                 <div className="header-left">
                   <span className="booking-id">Booking #{booking.id}</span>
@@ -79,7 +104,7 @@ const MyBookings = () => {
                 </div>
               </div>
 
-              {/* Card Body */}
+
               <div className="card-body">
                 <div className="info-row">
                   <span>📅 Date & Time:</span>
@@ -91,7 +116,7 @@ const MyBookings = () => {
                 </div>
               </div>
 
-              {/* Card Footer (Actions) */}
+
               <div className="card-footer">
                 {booking.type === 'Upcoming' && (
                   <button className="action-btn primary" onClick={() => navigate('/tracking')}>

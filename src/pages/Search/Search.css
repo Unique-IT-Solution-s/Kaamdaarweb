@@ -37,22 +37,6 @@
   flex-wrap: nowrap;
 }
 
-.search-location {
-  min-height: 50px;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  flex-shrink: 0;
-  border: 1px solid #e0e5ec;
-  border-radius: 10px;
-  background: #fff;
-  color: var(--text-dark, #1f2937);
-  font-size: 14px;
-  white-space: nowrap;
-}
-
 .search-input-wrapper {
   flex: 1;
   min-width: 0;

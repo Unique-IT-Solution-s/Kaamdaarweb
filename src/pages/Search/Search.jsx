@@ -209,11 +209,6 @@ const Search = () => {
       {/* Search Bar */}
       <section className="top-search-bar">
         <div className="container top-search-container">
-          <div className="search-location">
-            <span aria-hidden="true">📍</span>
-            <span>Jaipur, Rajasthan</span>
-            <span aria-hidden="true">▼</span>
-          </div>
 
           <div className="search-input-wrapper">
             <span aria-hidden="true">🔍</span>
