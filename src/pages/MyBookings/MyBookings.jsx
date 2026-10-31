@@ -2,74 +2,77 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MyBookings.css';
 
+
 const dummyBookings = [
-    {
-      id: 'KD-8472',
-      service: 'AC Service & Repair',
-      provider: 'Rakesh Kumar',
-      date: '10 Oct 2026, 12:00 PM',
-      price: '299',
-      status: 'On the Way',
-      type: 'Upcoming'
-    },
-    {
-      id: 'KD-8410',
-      service: 'Plumber',
-      provider: 'Suresh Sharma',
-      date: '05 Oct 2026, 10:00 AM',
-      price: '199',
-      status: 'Completed',
-      type: 'Completed'
-    },
-    {
-      id: 'KD-8395',
-      service: 'Carpenter',
-      provider: 'Rajesh Woodworks',
-      date: '02 Oct 2026, 09:00 AM',
-      price: '450',
-      status: 'Completed',
-      type: 'Completed' 
-    },
-    {
-      id: 'KD-8410',
-      service: 'Plumber',
-      provider: 'Suresh Sharma',
-      date: '05 Oct 2026, 10:00 AM',
-      price: '199',
-      status: 'Completed',
-      type: 'Completed'
-    },
-    {
-      id: 'KD-8301',
-      service: 'Home Cleaning',
-      provider: 'Neha Cleaners',
-      date: '28 Sep 2026, 02:00 PM',
-      price: '499',
-      status: 'Cancelled',
-      type: 'Cancelled'
-    },
-    {
-      id: 'KD-8295',
-      service: 'Electrician',
-      provider: 'Amit Verma',
-      date: '25 Sep 2026, 11:30 AM',
-      price: '349', 
-      status: 'Cancelled',
-      type: 'Cancelled'
-    }
-  ];
 
+  {
+    id: 'KD-8472',
+    service: 'AC Service & Repair',
+    provider: 'Rakesh Kumar',
+    date: '10 Oct 2026, 12:00 PM',
+    price: '299',
+    status: 'On the Way',
+    type: 'Upcoming'
+  },
+  {
+    id: 'KD-8410',
+    service: 'Plumber',
+    provider: 'Suresh Sharma',
+    date: '05 Oct 2026, 10:00 AM',
+    price: '199',
+    status: 'Completed',
+    type: 'Completed'
+  },
+  {
+    id: 'KD-8395',
+    service: 'Carpenter',
+    provider: 'Rajesh Woodworks',
+    date: '02 Oct 2026, 09:00 AM',
+    price: '450',
+    status: 'Completed',
+    type: 'Completed'
+  },
+  {
+    id: 'KD-8362',
+    service: 'Pest Control',
+    provider: 'SafeHome Experts',
+    date: '29 Sep 2026, 03:00 PM',
+    price: '599',
+    status: 'Completed',
+    type: 'Completed'
+  },
+  {
+    id: 'KD-8301',
+    service: 'Home Cleaning',
+    provider: 'Neha Cleaners',
+    date: '28 Sep 2026, 02:00 PM',
+    price: '499',
+    status: 'Cancelled',
+    type: 'Cancelled'
+  },
+  {
+    id: 'KD-8295',
+    service: 'Electrician',
+    provider: 'Amit Verma',
+    date: '25 Sep 2026, 11:30 AM',
+    price: '349',
+    status: 'Cancelled',
+    type: 'Cancelled'
+  }
+];
 
-  const MyBookings = () => {
+const MyBookings = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('Upcoming');
+
+  // Filter bookings based on active tab
   const filteredBookings = dummyBookings.filter(b => b.type === activeTab);
 
   return (
     <div className="my-bookings-page container">
       <h1 className="page-title">My Bookings</h1>
 
-
+      {/* Tabs */}
       <div className="booking-tabs">
         {['Upcoming', 'Completed', 'Cancelled'].map(tab => (
           <button 
@@ -82,7 +85,7 @@ const dummyBookings = [
         ))}
       </div>
 
-
+      {/* Bookings List */}
       <div className="bookings-list">
         {filteredBookings.length === 0 ? (
           <div className="empty-state">
@@ -92,7 +95,7 @@ const dummyBookings = [
           filteredBookings.map(booking => (
             <div className="booking-card" key={booking.id}>
               
-
+              {/* Card Header */}
               <div className="card-header">
                 <div className="header-left">
                   <span className="booking-id">Booking #{booking.id}</span>
@@ -104,7 +107,7 @@ const dummyBookings = [
                 </div>
               </div>
 
-
+              {/* Card Body */}
               <div className="card-body">
                 <div className="info-row">
                   <span>📅 Date & Time:</span>
@@ -116,7 +119,7 @@ const dummyBookings = [
                 </div>
               </div>
 
-
+              {/* Card Footer (Actions) */}
               <div className="card-footer">
                 {booking.type === 'Upcoming' && (
                   <button className="action-btn primary" onClick={() => navigate('/tracking')}>
